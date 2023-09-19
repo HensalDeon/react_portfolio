@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import toast from 'react-hot-toast';
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
@@ -48,7 +47,7 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          toast.success("Thank you. I will get back to you as soon as possible.");
+          alert("Thank you. I will get back to you as soon as possible.");
 
           setForm({
             name: "",
@@ -60,7 +59,7 @@ const Contact = () => {
           setLoading(false);
           console.error(error);
 
-          toast.error("Ahh, something went wrong. Please try again.");
+          alert("Ahh, something went wrong. Please try again.");
         }
       );
   };
