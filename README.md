@@ -113,7 +113,7 @@ Threejs_3D_Portfolio/
 Download or clone this repo by using the link below:
 
 ```bash
- https://github.com/ladunjexa/Threejs_3D_Portfolio.git
+ https://github.com/HensalDeon/react_portfolio
 ```
 
 #### Step 2:
@@ -169,20 +169,6 @@ At the main folder execute the following command in console to run the developme
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- Contributing -->
-## :wave: Contributing
-
-<a href="https://github.com/ladunjexa/Threejs_3D_Portfolio/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ladunjexa/Threejs_3D_Portfolio" />
-</a>
-
-
-Contributions are always welcome!
-
-See [`contributing.md`](https://contributing.md/) for ways to get started.
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
@@ -194,19 +180,12 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- License -->
-## :warning: License
-
-Distributed under the MIT License. See [LICENSE.txt](https://github.com/ladunjexa/Threejs_3D_Portfolio/blob/main/LICENSE) for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- Contact -->
 ## :handshake: Contact
 
-Liron Abutbul - [@lironabutbul6](https://twitter.com/lironabutbul6) - [@ladunjexa](https://t.me/ladunjexa)
+Hensal Deon - [hensal deon](https://www.linkedin.com/in/hensal-deon-472883227/)
 
-Project Link: [https://github.com/ladunjexa/Threejs_3D_Portfolio](https://github.com/ladunjexa/Threejs_3D_Portfolio)
+Project Link: [https://github.com/ladunjexa/Threejs_3D_Portfolio](https://github.com/HensalDeon/react_portfolio)](https://github.com/HensalDeon/react_portfolio)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
