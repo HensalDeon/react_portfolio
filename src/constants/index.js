@@ -20,10 +20,16 @@ import {
     figma,
     docker,
     brototype,
+    trusttech,
     traction,
+    buzzgram,
     textutils,
     netflixclone,
+    customcreation,
+    animemaster,
+    mudmaxanimations,
     threejs,
+    sssl,
 } from "../assets";
 
 export const navLinks = [
@@ -47,8 +53,16 @@ const services = [
         icon: web,
     },
     {
+        title: "Full Stack Developer",
+        icon: creator,
+    },
+    {
         title: "Backend Developer",
         icon: backend,
+    },
+    {
+        title: "React Js Developer",
+        icon: mobile,
     },
 ];
 
@@ -121,16 +135,28 @@ const technologies = [
 
 const experiences = [
     {
-        title: "Mern stack Developer (Intern)",
+        title: "Web Developer",
+        company_name: "Trusttech",
+        icon: trusttech,
+        iconBg: "#356BB2",
+        date: "Dec 2023 - Present",
+        points: [
+            "Developed Web applications using React Js, HTML5, SCSS, Tailwind CSS, Bootstrap,Javascript, Node.js, PHP and git/ github for version control and collaboration",
+            "Collaborated with the design team using Figma to craft visually appealing and user-friendly web designs",
+        ],
+    },
+    {
+        title: "Mern stack Developer",
         company_name: "Brototype",
         icon: brototype,
         iconBg: "#E6DEDD",
         date: "Jan 2023 - Present",
         points: [
-            "Learning and gaining hands-on experience in web development using React.js and other related technologies during my bootcamp at Brototype.",
-            "Engaging in collaborative projects with fellow bootcamp participants, including designers and mentors, to build web applications and hone my skills.",
-            "Exploring responsive design principles and practicing cross-browser compatibility to create user-friendly web experiences.",
-            "Actively participating in code reviews and embracing feedback from experienced developers to enhance my coding proficiency.",
+            "Skilled in frontend development with expertise in React.js, Redux, JavaScript, HTML5, CSS, Tailwind CSS, Bootstrap, Handlebars.js(hbs) and EJS.",
+            "Developed web applications using modern backend technologies such as Node.js Express.js, MongoDB, NoSQL, SQL, Ajax, Axios and jQuery.",
+            "Specialize in backend development using Node.js with Express.js framework and MongoDB(NoSQL) frontend development using React.js.",
+            "Proficient in writing efficient database queries using ES6, enhancing application performance and reducing response times.",
+            "Collaborated with the design team using Figma to create visually appealing and userfriendly web designs.",
         ],
     },
 ];
@@ -160,6 +186,91 @@ const testimonials = [
 ];
 
 const projects = [
+    
+    {
+        name: "Simple Search Solutions",
+        description:
+            "Simple Search Solutions sets the new standard for navigating the job market. Imagine a platform where job hunting feels like a breeze, where interaction with job listings is intuitive, and where your journey is seamlessly responsive across all your devices. ",
+        tags: [
+            {
+                name: "react.js",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "python",
+                color: "green-text-gradient",
+            },
+            {
+                name: "django",
+                color: "pink-text-gradient",
+            },
+        ],
+        image: sssl,
+        source_code_link: "https://github.com/HensalDeon/SimpleSearchSolutions",
+    },
+    {
+        name: "BuzzGram",
+        description:
+            "Buzzgram redefines the social media experience. Think endless scrolling for seamless content discovery, beautifully designed user profiles, the ability to report and interact with posts, and a fully responsive design for a smooth user journey across all devices.",
+        tags: [
+            {
+                name: "react.js",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "mongodb",
+                color: "green-text-gradient",
+            },
+            {
+                name: "node.js",
+                color: "pink-text-gradient",
+            },
+        ],
+        image: buzzgram,
+        source_code_link: "https://github.com/HensalDeon/BuzzGram",
+    },
+    {
+        name: "Mudmax Animations",
+        description:
+            "A dynamic React website for an institute specializing in animation and VFX, providing a comprehensive platform to showcase their courses and services.Technologies used Tailwind CSS, Framer Motion, Formik, Yup, Toastify, Node.js, JavaScript, JWT, Express.js, MongoDB, Firebase, etc.",
+        tags: [
+            {
+                name: "three.js",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "react.js",
+                color: "green-text-gradient",
+            },
+            {
+                name: "node.js",
+                color: "pink-text-gradient",
+            },
+        ],
+        image: mudmaxanimations,
+        source_code_link: "https://github.com/HensalDeon/Custom-Creation",
+    },
+    {
+        name: "T-CraftStudio",
+        description:
+            "T-CraftStudio is a cutting-edge 3D web application that allows users to customize and visualize their own unique T-shirt designs in real-time. Built with Vite, React.js, Three.js, React Three Fibre, React Three Drei, Framer Motion, and styled with Tailwind CSS. Deliver an interactive user experience.",
+        tags: [
+            {
+                name: "three.js",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "react.js",
+                color: "green-text-gradient",
+            },
+            {
+                name: "node.js",
+                color: "pink-text-gradient",
+            },
+        ],
+        image: customcreation,
+        source_code_link: "https://github.com/HensalDeon/Custom-Creation",
+    },
     {
         name: "Traction",
         description:
@@ -182,6 +293,27 @@ const projects = [
         source_code_link: "https://github.com/HensalDeon/TRACTION",
     },
     {
+        name: "AnimeMaster",
+        description:
+            "AnimeMaster is a responsive web app built with Next.js, TypeScript, Framer Motion and Tailwind css to showcase a curated collection of animes based on popularity. The project includes features such as responsiveness, popularity sorting, and an engaging infinite scroll.",
+        tags: [
+            {
+                name: "next.js",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "node.js",
+                color: "green-text-gradient",
+            },
+            {
+                name: "tailwind css",
+                color: "pink-text-gradient",
+            },
+        ],
+        image: animemaster,
+        source_code_link: "https://github.com/HensalDeon/anime_master",
+    },
+    {
         name: "Netflix Clone",
         description:
             "A cutting-edge Netflix clone project, offering users a seamless streaming experience with a vast library of movies, TV shows, and original content, all complemented by personalized recommendations and user-friendly features for an immersive entertainment journey.",
@@ -201,27 +333,6 @@ const projects = [
         ],
         image: netflixclone,
         source_code_link: "https://github.com/HensalDeon/netflix-replica",
-    },
-    {
-        name: "TextUtils",
-        description:
-            "An advanced text analysis and counting application designed to empower users with the ability to analyze and count words, characters, and various linguistic patterns in their texts, while also offering insights and recommendations for enhancing written content.",
-        tags: [
-            {
-                name: "react.js",
-                color: "blue-text-gradient",
-            },
-            {
-                name: "bootstrap",
-                color: "green-text-gradient",
-            },
-            {
-                name: "css",
-                color: "pink-text-gradient",
-            },
-        ],
-        image: textutils,
-        source_code_link: "https://github.com/HensalDeon/textutils",
     },
 ];
 

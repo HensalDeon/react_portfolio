@@ -27,10 +27,16 @@ import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 
 import brototype from "./company/brototype.png"
+import trusttech from "./company/trusttech.png"
 
 import traction from "./traction.png";
+import buzzgram from "./buzzgram.png";
 import textutils from "./textutils.png";
 import netflixclone from "./netflixclone.png";
+import customcreation from "./customcreation.png";
+import animemaster from "./animemaster.png";
+import sssl from "./sssl.png";
+import mudmaxanimations from "./mudmaxanimations.png";
 
 export {
   logo,
@@ -60,7 +66,13 @@ export {
   typescript,
   threejs,
   brototype,
+  trusttech,
   traction,
+  buzzgram,
   textutils,
   netflixclone,
+  customcreation,
+  animemaster,
+  sssl,
+  mudmaxanimations
 };
