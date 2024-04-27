@@ -37,6 +37,7 @@ import customcreation from "./customcreation.png";
 import animemaster from "./animemaster.png";
 import sssl from "./sssl.png";
 import mudmaxanimations from "./mudmaxanimations.png";
+import trsutcapital from "./trsutcapital.png";
 
 export {
   logo,
@@ -74,5 +75,6 @@ export {
   customcreation,
   animemaster,
   sssl,
-  mudmaxanimations
+  mudmaxanimations,
+  trsutcapital
 };

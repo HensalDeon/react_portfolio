@@ -47,8 +47,7 @@ const About = () => {
                 variants={fadeIn("", "", 0.1, 1)}
                 className="mt-4 text-secondary text-[17px] max-w-4xl leading-[30px]"
             >
-                I&#39;m a skilled software developer with experience in Javascript and expertise in frameworks like React,
-                Node.js, Express.js and Three.js(basic). I&#39;m a quick learner and collaborate closely
+                I&#39;m a skilled software developer adept at creating and optimizingweb applications. Proficient in Node.js, Express.js, MongoDB, and React.js. I&#39;m a quick learner and collaborate closely
                 with clients to create efficient, scalable, and user-friendly solutions that solve real-world problems.
                 Let&#39;s work together to bring your ideas to life!
             </motion.p>

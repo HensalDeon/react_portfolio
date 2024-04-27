@@ -30,6 +30,7 @@ import {
     mudmaxanimations,
     threejs,
     sssl,
+    trsutcapital,
 } from "../assets";
 
 export const navLinks = [
@@ -150,7 +151,7 @@ const experiences = [
         company_name: "Brototype",
         icon: brototype,
         iconBg: "#E6DEDD",
-        date: "Jan 2023 - Present",
+        date: "Jan 2023 - Dec 2023",
         points: [
             "Skilled in frontend development with expertise in React.js, Redux, JavaScript, HTML5, CSS, Tailwind CSS, Bootstrap, Handlebars.js(hbs) and EJS.",
             "Developed web applications using modern backend technologies such as Node.js Express.js, MongoDB, NoSQL, SQL, Ajax, Axios and jQuery.",
@@ -186,7 +187,6 @@ const testimonials = [
 ];
 
 const projects = [
-    
     {
         name: "Simple Search Solutions",
         description:
@@ -269,7 +269,28 @@ const projects = [
             },
         ],
         image: customcreation,
-        source_code_link: "https://github.com/HensalDeon/Custom-Creation",
+        source_code_link: "https://github.com/HensalDeon/T-CraftStudio",
+    },
+    {
+        name: "Trust Capital",
+        description:
+            "Trust Capital is a trading platform dedicated to equipping traders worldwide with the tools, knowledge, and support they need to achieve their financial goals. Technologies used are HTML, CSS, Tailwind CSS, JavaScript, Laravel and PHP. Collaborated with the team to ensure seamless user experience",
+        tags: [
+            {
+                name: "html5",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "laravel",
+                color: "green-text-gradient",
+            },
+            {
+                name: "tailwind",
+                color: "pink-text-gradient",
+            },
+        ],
+        image: trsutcapital,
+        source_code_link: "https://github.com",
     },
     {
         name: "Traction",
@@ -336,4 +357,24 @@ const projects = [
     },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+const contactInputs = [
+    {
+        label: "Name",
+        type: "text",
+        name: "name",
+        placeholder: "What's your good name?"
+    },
+    {
+        label: "email",
+        type: "email",
+        name: "email",
+        placeholder: "What's your web address?",
+    },
+    {
+        label: "Message",
+        type: "textarea",
+        name: "message",
+        placeholder: "What you want to say?"
+    },
+];
+export { services, technologies, experiences, testimonials, projects, contactInputs };
