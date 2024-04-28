@@ -138,7 +138,7 @@
   transform: translateZ(0);
 }
 .has-error {
-  @apply sm:text-sm text-xs text-red-600;
+  @apply absolute bottom-0 transform translate-y-[120%] sm:text-sm text-xs text-red-600;
 }
 @keyframes mulShdSpin {
   0%,

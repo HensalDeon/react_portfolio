@@ -53,7 +53,7 @@ const Contact = () => {
                 <form onSubmit={formik.handleSubmit} className="mt-12 flex flex-col gap-8">
                     {contactInputs.map((item, index) => (
                         <div key={index}>
-                            <label className="flex flex-col">
+                            <label className="flex flex-col relative">
                                 <span className="text-white font-medium mb-4">Your {item?.label}</span>
                                 {item.type == "textarea" ? (
                                     <textarea
