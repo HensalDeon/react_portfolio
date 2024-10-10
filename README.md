@@ -4,7 +4,7 @@
   <p>
     Three.js 3D Portfolio is a modern UI/UX and functional Developer Portfolio Web built with React & Three.js
   </p>
-<!-- Table of Contents -->
+<!-- Table of Contents --> 
 <details>
 
 <summary>
