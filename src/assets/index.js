@@ -5,6 +5,7 @@ import creator from "./creator.png";
 import mobile from "./mobile.png";
 import web from "./web.png";
 import github from "./github.png";
+import web_icon from "./web_icon.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
@@ -28,6 +29,7 @@ import threejs from "./tech/threejs.svg";
 
 import brototype from "./company/brototype.png"
 import trusttech from "./company/trusttech.png"
+import webandcrafts from "./company/webandcrafts.png"
 
 import traction from "./traction.png";
 import buzzgram from "./buzzgram.png";
@@ -38,6 +40,7 @@ import animemaster from "./animemaster.png";
 import sssl from "./sssl.png";
 import mudmaxanimations from "./mudmaxanimations.png";
 import trsutcapital from "./trsutcapital.png";
+import giftcards from "./giftcards.png";
 
 export {
   logo,
@@ -47,6 +50,7 @@ export {
   mobile,
   web,
   github,
+  web_icon,
   menu,
   close,
   css,
@@ -67,6 +71,7 @@ export {
   typescript,
   threejs,
   brototype,
+  webandcrafts,
   trusttech,
   traction,
   buzzgram,
@@ -76,5 +81,6 @@ export {
   animemaster,
   sssl,
   mudmaxanimations,
-  trsutcapital
+  trsutcapital,
+  giftcards
 };
