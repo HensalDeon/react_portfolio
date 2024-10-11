@@ -7,6 +7,8 @@ import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 const ProjectCard = ({
   index,
@@ -24,7 +26,7 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary p-5 rounded-2xl min-w-[359px]"
+        className="bg-tertiary p-5 rounded-2xl max-w-[359px]"
       >
         <div className="relative w-full h-[230px]">
           <img
@@ -104,10 +106,46 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className="pt-20 flex flex-row overflow-x-auto gap-7 overflow-y-hidden">
+      {/* <div className="pt-20 flex flex-row overflow-x-auto gap-7 overflow-y-hidden">
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
+      </div> */}
+      <div className="pt-20">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={30}
+          centeredSlides={true}
+          loop={true}
+          slidesPerView={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+              centeredSlides: true,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+              centeredSlides: false,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+              centeredSlides: false,
+            },
+          }}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3000 }}
+          className="swiper-container"
+        >
+          {projects.map((project, index) => (
+            <SwiperSlide key={`project-${index}`}>
+              <ProjectCard index={index} {...project} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </>
   );

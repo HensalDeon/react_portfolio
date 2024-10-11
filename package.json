@@ -24,6 +24,7 @@
     "react-three-fiber": "^6.0.13",
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
+    "swiper": "^11.1.14",
     "three": "^0.156.1",
     "yup": "^1.4.0"
   },

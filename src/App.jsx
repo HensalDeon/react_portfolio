@@ -1,5 +1,9 @@
 import { BrowserRouter } from "react-router-dom";
 import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 function App() {
 
     return (
