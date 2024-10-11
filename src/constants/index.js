@@ -231,7 +231,7 @@ const projects = [
       },
     ],
     image: giftcards,
-    source_code_link: "",
+    live_link: "https://ikea-giftstaging.webc.in/en",
   },
   {
     name: "IKEA-Family Delivery",
@@ -252,7 +252,7 @@ const projects = [
       },
     ],
     image: giftcards,
-    source_code_link: "",
+    live_link: "https://4532subscribe.family.ikea.qa/en",
   },
   {
     name: "Simple Search Solutions",
@@ -315,7 +315,7 @@ const projects = [
       },
     ],
     image: mudmaxanimations,
-    source_code_link: "https://github.com/HensalDeon/Custom-Creation",
+    source_code_link: "https://mudmaxanimations.com/",
   },
   {
     name: "T-CraftStudio",

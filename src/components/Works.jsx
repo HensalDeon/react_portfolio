@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 import { styles } from "../styles";
-import { github } from "../assets";
+import { github, web_icon } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
@@ -17,12 +17,14 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  live_link,
 }) => {
+  const show_icon = live_link ?? source_code_link;
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
         options={{
-          max: 45,
+          max: 10,
           scale: 1,
           speed: 450,
         }}
@@ -35,16 +37,16 @@ const ProjectCard = ({
             className="w-full h-full object-cover rounded-2xl"
           />
 
-          {source_code_link && (
+          {show_icon && (
             <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
               <div
-                onClick={() => window.open(source_code_link, "_blank")}
+                onClick={() => window.open(show_icon, "_blank")}
                 className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
               >
                 <img
-                  src={github}
+                  src={live_link ? web_icon : github}
                   alt="source code"
-                  className="w-1/2 h-1/2 object-contain"
+                  className="object-contain w-1/2 h-1/2"
                 />
               </div>
             </div>
@@ -82,7 +84,8 @@ ProjectCard.propTypes = {
     })
   ).isRequired,
   image: PropTypes.string.isRequired,
-  source_code_link: PropTypes.string.isRequired,
+  source_code_link: PropTypes.string,
+  live_link: PropTypes.string,
 };
 
 const Works = () => {
