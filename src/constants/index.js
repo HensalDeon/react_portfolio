@@ -33,6 +33,7 @@ import {
   sssl,
   trsutcapital,
   giftcards,
+  nextjs,
 } from "../assets";
 
 export const navLinks = [
@@ -95,6 +96,10 @@ const technologies = [
     icon: reactjs,
   },
   {
+    name: "Next Js",
+    icon: nextjs,
+  },
+  {
     name: "Redux Toolkit",
     icon: redux,
   },
@@ -114,10 +119,10 @@ const technologies = [
     name: "MongoDB",
     icon: mongodb,
   },
-  {
-    name: "Postgresql",
-    icon: postgresql,
-  },
+  // {
+  //   name: "Postgresql",
+  //   icon: postgresql,
+  // },
   {
     name: "Firebase",
     icon: firebase,

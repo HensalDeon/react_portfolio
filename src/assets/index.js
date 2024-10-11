@@ -18,6 +18,7 @@ import javascript from "./tech/javascript.png";
 import java from "./tech/java.png";
 import mongodb from "./tech/mongodb.png";
 import postgresql from "./tech/postgresql.png";
+import nextjs from "./tech/nextjs.png";
 import firebase from "./tech/firebase.png";
 import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
@@ -62,6 +63,7 @@ export {
   java,
   mongodb,
   postgresql,
+  nextjs,
   firebase,
   nodejs,
   reactjs,
