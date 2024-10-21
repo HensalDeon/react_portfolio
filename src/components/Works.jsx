@@ -128,7 +128,7 @@ const Works = () => {
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={30}
           centeredSlides={true}
-          // loop={true}
+          loop={true}
           slidesPerView={1}
           breakpoints={{
             640: {
@@ -149,7 +149,7 @@ const Works = () => {
           }}
           navigation
           pagination={{ clickable: true }}
-          // autoplay={{ delay: 3000 }}
+          autoplay={{ delay: 3000 }}
           className="swiper-container"
         >
           {projects.map((project, index) => (
