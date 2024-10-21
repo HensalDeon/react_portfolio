@@ -9,6 +9,7 @@ import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import useUtility from "../hooks/useUtility";
 
 const ProjectCard = ({
   index,
@@ -20,6 +21,7 @@ const ProjectCard = ({
   live_link,
 }) => {
   const show_icon = live_link ?? source_code_link;
+  const { isTruncated, handleTrucate } = useUtility();
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
@@ -55,7 +57,14 @@ const ProjectCard = ({
 
         <div className="mt-5">
           <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
+          <p
+            className={`mt-2 text-secondary text-[14px] ${
+              isTruncated && "line-clamp-6"
+            } cursor-pointer`}
+            onClick={handleTrucate}
+          >
+            {description}
+          </p>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-2">
@@ -119,7 +128,7 @@ const Works = () => {
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={30}
           centeredSlides={true}
-          loop={true}
+          // loop={true}
           slidesPerView={1}
           breakpoints={{
             640: {
@@ -140,7 +149,7 @@ const Works = () => {
           }}
           navigation
           pagination={{ clickable: true }}
-          autoplay={{ delay: 3000 }}
+          // autoplay={{ delay: 3000 }}
           className="swiper-container"
         >
           {projects.map((project, index) => (
