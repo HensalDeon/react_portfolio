@@ -42,6 +42,7 @@ import sssl from "./sssl.png";
 import mudmaxanimations from "./mudmaxanimations.png";
 import trsutcapital from "./trsutcapital.png";
 import giftcards from "./giftcards.png";
+import sfm from "./sfm.png";
 
 export {
   logo,
@@ -84,5 +85,6 @@ export {
   sssl,
   mudmaxanimations,
   trsutcapital,
-  giftcards
+  giftcards,
+  sfm
 };

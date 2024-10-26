@@ -33,6 +33,7 @@ import {
   sssl,
   trsutcapital,
   giftcards,
+  sfm,
   nextjs,
 } from "../assets";
 
@@ -44,6 +45,10 @@ export const navLinks = [
   {
     id: "work",
     title: "Work",
+  },
+  {
+    id: "projects",
+    title: "Projects",
   },
   {
     id: "contact",
@@ -251,7 +256,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: giftcards,
+    image: sfm,
     live_link: "https://4532subscribe.family.ikea.qa/en",
   },
   {
@@ -315,7 +320,7 @@ const projects = [
       },
     ],
     image: mudmaxanimations,
-    source_code_link: "https://mudmaxanimations.com/",
+    live_link: "https://mudmaxanimations.com/",
   },
   {
     name: "T-CraftStudio",
@@ -336,7 +341,7 @@ const projects = [
       },
     ],
     image: customcreation,
-    source_code_link: "https://github.com/HensalDeon/T-CraftStudio",
+    live_link: "https://t-craftstudio.netlify.app/",
   },
   {
     name: "Trust Capital",
@@ -399,7 +404,7 @@ const projects = [
       },
     ],
     image: animemaster,
-    source_code_link: "https://github.com/HensalDeon/anime_master",
+    live_link: "https://animemaster.vercel.app",
   },
   {
     name: "Netflix Clone",

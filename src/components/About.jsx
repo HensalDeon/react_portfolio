@@ -8,7 +8,14 @@ import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
 export const ServiceCard = ({ index, title, icon }) => (
-    <Tilt className="xs:w-[250px] w-full">
+    <Tilt
+        className="xs:w-[250px] w-full"
+        options={{
+            max: 30,
+            scale: 1,
+            speed: 50,
+        }}
+    >
         <motion.div
             variants={fadeIn("right", "spring", index * 0.5, 0.75)}
             className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
@@ -47,9 +54,10 @@ const About = () => {
                 variants={fadeIn("", "", 0.1, 1)}
                 className="mt-4 text-secondary text-[17px] max-w-4xl leading-[30px]"
             >
-                I&#39;m a skilled software developer adept at creating and optimizingweb applications. Proficient in Node.js, Express.js, MongoDB, and React.js. I&#39;m a quick learner and collaborate closely
-                with clients to create efficient, scalable, and user-friendly solutions that solve real-world problems.
-                Let&#39;s work together to bring your ideas to life!
+                I&#39;m a skilled software developer adept at creating and optimizingweb applications. Proficient in
+                Node.js, Express.js, MongoDB, and React.js. I&#39;m a quick learner and collaborate closely with clients to
+                create efficient, scalable, and user-friendly solutions that solve real-world problems. Let&#39;s work
+                together to bring your ideas to life!
             </motion.p>
 
             <div className="mt-20 flex flex-wrap gap-10 justify-center">
