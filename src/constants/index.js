@@ -35,6 +35,7 @@ import {
   giftcards,
   sfm,
   nextjs,
+  wac,
 } from "../assets";
 
 export const navLinks = [
@@ -217,6 +218,27 @@ const testimonials = [
 ];
 
 const projects = [
+  {
+    name: "WACpro",
+    description:
+      "WACpro is an internal dashboard resembling an ERP system designed for company management. It features multiple modules like admin, accounts, assets, calls, campaigns, clients, HR, meetings, project management, sales, settings, team management, time tracking, and AI integrations, providing a comprehensive, centralized control center.",
+    tags: [
+      {
+        name: "react.js",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "SWR",
+        color: "green-text-gradient",
+      },
+      {
+        name: "python",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: wac,
+    live_link: "https://pro.webandcrafts.com", // replace with actual link if available
+  },
   {
     name: "IKEA-Giftcards",
     description:
