@@ -237,7 +237,7 @@ const projects = [
       },
     ],
     image: wac,
-    live_link: "https://pro.webandcrafts.com", // replace with actual link if available
+    live_link: "https://pro.webandcrafts.com",
   },
   {
     name: "IKEA-Giftcards",
