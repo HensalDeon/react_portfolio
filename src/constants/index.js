@@ -89,10 +89,10 @@ const technologies = [
     name: "JavaScript",
     icon: javascript,
   },
-  {
-    name: "Java",
-    icon: java,
-  },
+  // {
+  //   name: "Java",
+  //   icon: java,
+  // },
   // {
   //     name: "TypeScript",
   //     icon: typescript,
@@ -133,10 +133,10 @@ const technologies = [
     name: "Firebase",
     icon: firebase,
   },
-  // {
-  //     name: "Three JS",
-  //     icon: threejs,
-  // },
+  {
+      name: "Three JS",
+      icon: threejs,
+  },
   {
     name: "git",
     icon: git,
