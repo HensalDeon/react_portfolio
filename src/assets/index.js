@@ -43,6 +43,8 @@ import mudmaxanimations from "./mudmaxanimations.png";
 import trsutcapital from "./trsutcapital.png";
 import giftcards from "./giftcards.png";
 import sfm from "./sfm.png";
+import familysub from "./familysub.png";
+import keralarealtor from "./keralarealtor.png";
 
 export {
   logo,
@@ -86,5 +88,7 @@ export {
   mudmaxanimations,
   trsutcapital,
   giftcards,
-  sfm
+  sfm,
+  familysub,
+  keralarealtor
 };
