@@ -37,6 +37,7 @@ import {
     sfm,
     familysub,
     keralarealtor
+  wac,
 } from "../assets";
 
 export const navLinks = [
@@ -90,10 +91,10 @@ const technologies = [
         name: "JavaScript",
         icon: javascript,
     },
-    {
-        name: "Java",
-        icon: java,
-    },
+    // {
+      //   name: "Java",
+      //   icon: java,
+    // },
     // {
     //     name: "TypeScript",
     //     icon: typescript,
@@ -134,10 +135,10 @@ const technologies = [
         name: "Firebase",
         icon: firebase,
     },
-    // {
-    //     name: "Three JS",
-    //     icon: threejs,
-    // },
+    {
+        name: "Three JS",
+        icon: threejs,
+    },
     {
         name: "git",
         icon: git,
@@ -217,6 +218,27 @@ const testimonials = [
 
 const projects = [
     {
+    name: "WACpro",
+    description:
+      "WACpro is an internal dashboard resembling an ERP system designed for company management. It features multiple modules like admin, accounts, assets, calls, campaigns, clients, HR, meetings, project management, sales, settings, team management, time tracking, and AI integrations, providing a comprehensive, centralized control center.",
+    tags: [
+      {
+        name: "react.js",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "SWR",
+        color: "green-text-gradient",
+      },
+      {
+        name: "python",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: wac,
+    live_link: "https://pro.webandcrafts.com",
+  },
+  {
         name: "Keralarealtor",
         description:
             "Keralarealtor is a dedicated real estate platform focused exclusively on Kerala. It helps users seamlessly discover properties including villas, flats, houses, and commercial buildings for sale, rent, or lease. With a user-friendly interface and powerful filters, it simplifies the property hunt like never before.",
