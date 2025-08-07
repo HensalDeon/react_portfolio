@@ -149,7 +149,7 @@ Don't forget to give the project a star! Thanks again!
 
 Hensal Deon - [hensal deon](https://www.linkedin.com/in/hensal-deon-472883227/)
 
-Project Link: [https://github.com/ladunjexa/Threejs_3D_Portfolio](https://github.com/HensalDeon/react_portfolio)](https://github.com/HensalDeon/react_portfolio)
+Project Link - [Project Link](https://github.com/HensalDeon/react_portfolio)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
