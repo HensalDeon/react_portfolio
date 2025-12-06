@@ -9,7 +9,7 @@ const Contact = () => {
     const { formik, loading } = useContact();
     return (
         <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
-            <motion.div variants={slideIn("left", "tween", 0.2, 1)} className="flex-[0.75] bg-black-100 py-8 px-5 rounded-2xl">
+            <motion.div variants={slideIn("left", "tween", 0.2, 1)} className="flex-[0.75] bg-black-100 py-8 lg:px-8 px-5 rounded-2xl">
                 <p className={styles.sectionSubText}>Get in touch</p>
                 <h3 className={styles.sectionHeadText}>Contact.</h3>
 
