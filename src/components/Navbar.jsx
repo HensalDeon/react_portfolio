@@ -28,8 +28,7 @@ const Navbar = () => {
           <p className="text-white text-[18px] font-bold cursor-pointer flex ">
             Hensal &nbsp;
             <span className="sm:block hidden">
-              {" "}
-              |&nbsp; Full Stack Developer
+              |&nbsp; Web Developer
             </span>
           </p>
         </Link>

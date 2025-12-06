@@ -38,6 +38,7 @@ import {
     familysub,
     keralarealtor,
     wac,
+    eightysixmedia,
 } from "../assets";
 
 export const navLinks = [
@@ -151,11 +152,22 @@ const technologies = [
 
 const experiences = [
     {
-        title: "React.js Developer",
+        title: "Senior Web Developer",
+        company_name: "Eighty Six Media",
+        icon: eightysixmedia, 
+        iconBg: "#000",
+        date: "October 2025 - Present",
+        points: [
+            "Develop web applications using Webflow, React.js, and Next.js.",
+            "Utilized TailwindCSS and CSS for responsive and scalable styling.",
+        ],
+    },
+    {
+        title: "Associate Software Developer",
         company_name: "Webandcrafts",
         icon: webandcrafts,
         iconBg: "#fff",
-        date: "July 2024 - Present",
+        date: "July 2024 - October 2025",
         points: [
             "Develop web applications using React.js and Next.js, focusing more on functionality than styling.",
             "Experienced with state management tools such as Recoil and Context.",

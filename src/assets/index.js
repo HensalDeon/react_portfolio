@@ -31,6 +31,7 @@ import threejs from "./tech/threejs.svg";
 import brototype from "./company/brototype.png"
 import trusttech from "./company/trusttech.png"
 import webandcrafts from "./company/webandcrafts.png"
+import eightysixmedia from "./company/eightysixmedia.png"
 
 import traction from "./traction.png";
 import buzzgram from "./buzzgram.png";
@@ -92,5 +93,6 @@ export {
   sfm,
   familysub,
   keralarealtor,
-  wac
+  wac,
+  eightysixmedia
 };
