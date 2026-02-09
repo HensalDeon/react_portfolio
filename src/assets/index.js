@@ -47,6 +47,7 @@ import sfm from "./sfm.png";
 import wac from "./wac.png";
 import familysub from "./familysub.png";
 import keralarealtor from "./keralarealtor.png";
+import nexsphere from "./nexsphere.png";
 
 export {
   logo,
@@ -94,5 +95,6 @@ export {
   familysub,
   keralarealtor,
   wac,
-  eightysixmedia
+  eightysixmedia,
+  nexsphere
 };
