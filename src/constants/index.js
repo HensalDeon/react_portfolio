@@ -26,8 +26,6 @@ import {
   webandcrafts,
   traction,
   buzzgram,
-  textutils,
-  netflixclone,
   customcreation,
   animemaster,
   mudmaxanimations,
@@ -40,6 +38,11 @@ import {
   wac,
   eightysixmedia,
   nexsphere,
+  mgps,
+  goodseoul,
+  blockchaincenter,
+  aneco,
+  gsu,
 } from "../assets";
 
 export const navLinks = [
@@ -205,34 +208,112 @@ const experiences = [
   },
 ];
 
-const testimonials = [
-  {
-    testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
-  },
-  {
-    testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
-  },
-  {
-    testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
-  },
-];
-
 const projects = [
+  {
+    name: "MGPS",
+    description:
+      "Developed a responsive and dynamic website for Mahatma Gandhi Public School, focusing on smooth user experience, modern UI interactions, animated page transitions, and email functionality.",
+    tags: [
+      {
+        name: "Next.js",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Tailwind CSS",
+        color: "green-text-gradient",
+      },
+      {
+        name: "TypeScript",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: mgps,
+    live_link: "https://www.mgpschool.org/",
+  },
+  {
+    name: "Global South Utilities",
+    description:
+      "Contributed as a frontend web developer to a modern, responsive website for GSU, focused on energy and water infrastructure solutions across the Global South. Built Webflow CMS content flows with smooth text transitions and engaging element animations.",
+    tags: [
+      {
+        name: "Webflow",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "JavaScript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "CMS",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: gsu,
+    live_link: "https://www.gsu.ae/",
+  },
+  {
+    name: "Aneco",
+    description:
+      "Developed a modern and responsive website for ANECO, a company specializing in advanced, chemical-free water treatment and disinfection technologies. Built the complete Webflow site with CMS-managed content, smooth transitions, and device-friendly layouts.",
+    tags: [
+      {
+        name: "Webflow",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "JavaScript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "CMS",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: aneco,
+    live_link: "https://aneco-me.ae/",
+  },
+  {
+    name: "Blockchain Center",
+    description:
+      "Developed a modern website for a blockchain organization with interactive elements, custom JavaScript enhancements, and dynamic CMS content while ensuring responsive and consistent design across devices.",
+    tags: [
+      {
+        name: "Webflow",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "JavaScript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "CMS",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: blockchaincenter,
+    live_link: "https://www.theblockchaincenter.ae/",
+  },
+  {
+    name: "Good Seoul",
+    description:
+      "Collaborated with the team to develop a visually rich, food-focused 3D website with immersive interactions, Spline scenes, custom JavaScript enhancements, smooth animations, and CMS-managed dynamic content.",
+    tags: [
+      {
+        name: "Webflow",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Spline",
+        color: "green-text-gradient",
+      },
+      {
+        name: "JavaScript",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: goodseoul,
+    live_link: "https://goodseoul.com",
+  },
   {
     name: "Nexsphere",
     description:
@@ -337,7 +418,7 @@ const projects = [
       },
     ],
     image: giftcards,
-    live_link: "https://ikea-giftstaging.webc.in/en",
+    live_link: "https://giftcards.ikea.ae/en",
   },
   {
     name: "IKEA - Family Delivery",
@@ -358,7 +439,7 @@ const projects = [
       },
     ],
     image: familysub,
-    live_link: "https://4532subscribe.family.ikea.qa/en",
+    live_link: "https://subscribe.family.ikea.qa/en",
   },
   {
     name: "Simple Search Solutions",
@@ -463,7 +544,7 @@ const projects = [
       },
     ],
     image: trsutcapital,
-    source_code_link: "https://github.com",
+    source_code_link: "https://trustcapital.ae/",
   },
   {
     name: "Traction",
@@ -505,28 +586,7 @@ const projects = [
       },
     ],
     image: animemaster,
-    live_link: "https://animemaster.vercel.app",
-  },
-  {
-    name: "Netflix Clone",
-    description:
-      "A cutting-edge Netflix clone project, offering users a seamless streaming experience with a vast library of movies, TV shows, and original content, all complemented by personalized recommendations and user-friendly features for an immersive entertainment journey.",
-    tags: [
-      {
-        name: "react.js",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "firebase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: netflixclone,
-    source_code_link: "https://github.com/HensalDeon/netflix-replica",
+    source_code_link: "https://github.com/HensalDeon/anime_master",
   },
 ];
 
@@ -550,11 +610,4 @@ const contactInputs = [
     placeholder: "What you want to say?",
   },
 ];
-export {
-  services,
-  technologies,
-  experiences,
-  testimonials,
-  projects,
-  contactInputs,
-};
+export { services, technologies, experiences, projects, contactInputs };

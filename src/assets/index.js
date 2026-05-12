@@ -28,15 +28,13 @@ import bootstrap from "./tech/bootstrap.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 
-import brototype from "./company/brototype.png"
-import trusttech from "./company/trusttech.png"
-import webandcrafts from "./company/webandcrafts.png"
-import eightysixmedia from "./company/eightysixmedia.png"
+import brototype from "./company/brototype.png";
+import trusttech from "./company/trusttech.png";
+import webandcrafts from "./company/webandcrafts.png";
+import eightysixmedia from "./company/eightysixmedia.png";
 
 import traction from "./traction.png";
 import buzzgram from "./buzzgram.png";
-import textutils from "./textutils.png";
-import netflixclone from "./netflixclone.png";
 import customcreation from "./customcreation.png";
 import animemaster from "./animemaster.png";
 import sssl from "./sssl.png";
@@ -48,6 +46,11 @@ import wac from "./wac.png";
 import familysub from "./familysub.png";
 import keralarealtor from "./keralarealtor.png";
 import nexsphere from "./nexsphere.png";
+import mgps from "./mgps.png";
+import goodseoul from "./goodseoul.png";
+import blockchaincenter from "./blockchaincenter.png";
+import aneco from "./aneco.png";
+import gsu from "./gsu.png";
 
 export {
   logo,
@@ -83,8 +86,6 @@ export {
   trusttech,
   traction,
   buzzgram,
-  textutils,
-  netflixclone,
   customcreation,
   animemaster,
   sssl,
@@ -96,5 +97,10 @@ export {
   keralarealtor,
   wac,
   eightysixmedia,
-  nexsphere
+  nexsphere,
+  mgps,
+  goodseoul,
+  blockchaincenter,
+  aneco,
+  gsu
 };
