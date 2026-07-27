@@ -43,6 +43,7 @@ import {
   blockchaincenter,
   aneco,
   gsu,
+  mazaintrading,
 } from "../assets";
 
 export const navLinks = [
@@ -209,6 +210,27 @@ const experiences = [
 ];
 
 const projects = [
+  {
+    name: "Mazain Sohar",
+    description:
+      "Built a modern and responsive procurement platform for Mazain Sohar, enabling industrial buyers to seamlessly connect with materials, tools, skilled manpower, and trusted suppliers through an efficient and user-friendly experience.",
+    tags: [
+      {
+        name: "Next.js",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Sanity",
+        color: "green-text-gradient",
+      },
+      {
+        name: "TypeScript",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: mazaintrading,
+    live_link: "https://www.mazaintrading.com/",
+  },
   {
     name: "MGPS",
     description:

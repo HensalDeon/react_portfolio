@@ -51,6 +51,7 @@ import goodseoul from "./goodseoul.png";
 import blockchaincenter from "./blockchaincenter.png";
 import aneco from "./aneco.png";
 import gsu from "./gsu.png";
+import mazaintrading from "./mazaintrading.png";
 
 export {
   logo,
@@ -102,5 +103,6 @@ export {
   goodseoul,
   blockchaincenter,
   aneco,
-  gsu
+  gsu,
+  mazaintrading
 };
