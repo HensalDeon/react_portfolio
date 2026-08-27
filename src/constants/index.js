@@ -45,6 +45,7 @@ import {
   aneco,
   gsu,
   mazaintrading,
+  ecwrd,
 } from "../assets";
 
 export const navLinks = [
@@ -211,6 +212,27 @@ const experiences = [
 ];
 
 const projects = [
+  {
+    name: "ECWRD",
+    description:
+      "Developed a responsive and dynamic website for Emirates Council for Work Relation Development, a global workforce transformation partner working at the intersection of policy, innovation, and economic growth.",
+    tags: [
+      {
+        name: "WordPress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "green-text-gradient",
+      },
+      {
+        name: "CMS",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: ecwrd,
+    live_link: "https://ecwrd.ae/",
+  },
   {
     name: "Mazain Sohar",
     description:

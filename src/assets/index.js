@@ -52,6 +52,7 @@ import blockchaincenter from "./blockchaincenter.png";
 import aneco from "./aneco.png";
 import gsu from "./gsu.png";
 import mazaintrading from "./mazaintrading.png";
+import ecwrd from "./ecwrd.png";
 
 export {
   logo,
@@ -104,5 +105,6 @@ export {
   blockchaincenter,
   aneco,
   gsu,
-  mazaintrading
+  mazaintrading,
+  ecwrd
 };
