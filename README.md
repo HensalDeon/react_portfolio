@@ -1,167 +1,177 @@
-<a name="readme-top"></a>
-<div align="center"
-  <h1>Three.js 3D Portfolio</h1>
-  <p>
-    Three.js 3D Portfolio is a modern UI/UX and functional Developer Portfolio Web built with React & Three.js
-  </p>
-<!-- Table of Contents --> 
-<details>
+# Hensal Deon Portfolio
 
-<summary>
+A modern, responsive developer portfolio built with React, Vite, Tailwind CSS, and Three.js. The site presents professional experience, technical skills, selected projects, and a contact flow through an animated, interactive web experience.
 
-# :notebook_with_decorative_cover: Table of Contents
+![Portfolio preview](readme_asset/3d-porfolio.png)
 
-</summary>
+## Table of Contents
 
-- [About the Project](#star2-about-the-project)
-  * [Folder Structure](#bangbang-folder-structure)
-  * [Tech Stack](#space_invader-tech-stack)
-- [Getting Started](#toolbox-getting-started)
-  * [Installation](#gear-installation)
-  * [Run Locally](#running-run-locally)
-- [Contributing](#wave-contributing)
-- [License](#warning-license)
-- [Contact](#handshake-contact)
-- [Acknowledgements](#gem-acknowledgements)
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Available Scripts](#available-scripts)
+- [Customization](#customization)
+- [Deployment](#deployment)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
-</details>  
+## Overview
 
-<!-- About the Project -->
-## :star2: About the Project
+This portfolio is designed to showcase frontend engineering work through a polished single-page experience. It includes a 3D hero scene, professional timeline, technology showcase, project carousel, and EmailJS-powered contact form.
 
-<div align="center">
-  <img src="readme_assets/3d-portfolio.png" height="auto" width="90%"/>
-</div>
+## Features
 
-<br />
+- Interactive 3D hero and background visuals using Three.js and React Three Fiber.
+- Responsive layout optimized for desktop, tablet, and mobile screens.
+- Animated page sections powered by Framer Motion.
+- Work experience timeline with company branding and role highlights.
+- Project carousel with live links, technology tags, and visual previews.
+- Contact form with Formik validation, Yup schema checks, EmailJS integration, and toast feedback.
+- Centralized content management through reusable constants and asset exports.
 
-This repository houses an well-designed and functional Developer Portfolio Website consisting Navbar, Hero, Overview, Work Experience, Technologies, Projects, Testimonials and Contact sections built with React & Three.js using TailwindCSS ⏭
+## Tech Stack
 
-<!-- Folder Structure -->
-### :bangbang: Folder Structure
+| Category | Technologies |
+| --- | --- |
+| Frontend | React 18, Vite, React Router |
+| Styling | Tailwind CSS, PostCSS, Autoprefixer |
+| 3D & Motion | Three.js, React Three Fiber, Drei, Framer Motion, Maath, React Tilt |
+| Forms | Formik, Yup, EmailJS, React Hot Toast |
+| UI Components | Swiper, React Vertical Timeline Component |
+| Tooling | ESLint, npm |
 
-Here is the folder structure of 3D-Portfolio.
-```bash
-Threejs_3D_Portfolio/
-|- public/
-|- src/
-  |-- assets/
-  |-- components/
-  |-- constants/
-  |-- hoc/
-  |-- utils/
-  |-- App.jsx
-  |-- index.css
-  |-- main.jsx
-  |-- styles.js
-|- postcss.config.cjs
-|- tailwind.config.cjs
-|- vite.config.js
-```
-<br />
-
-<!-- TechStack -->
-### :space_invader: Tech Stack
-
-[![My Skills](https://skillicons.dev/icons?i=js,react,tailwind,threejs)](https://skillicons.dev)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- Getting Started -->
-## :toolbox: Getting Started
-
-<!-- Installation -->
-### :gear: Installation
-
-#### Step 1:
-Download or clone this repo by using the link below:
+## Project Structure
 
 ```bash
- https://github.com/HensalDeon/react_portfolio
+.
+├── public/
+│   ├── desktop_pc/          # 3D desktop model assets
+│   └── planet/              # 3D planet model assets
+├── readme_asset/            # README preview assets
+├── src/
+│   ├── assets/              # Images, icons, logos, and tech assets
+│   ├── components/          # Reusable UI sections and layout components
+│   ├── components/canvas/   # Three.js canvas components
+│   ├── constants/           # Navigation, skills, experience, and project data
+│   ├── hoc/                 # Section wrapper utilities
+│   ├── hooks/               # Reusable React hooks
+│   ├── utils/               # Animation and validation helpers
+│   ├── App.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   └── styles.js
+├── index.html
+├── package.json
+├── tailwind.config.js
+└── vite.config.js
 ```
 
-#### Step 2:
+## Getting Started
 
-3D-Portfolio using NPM (Node Package Manager), therefore, make sure that Node.js is installed by execute the following command in console:
+### Prerequisites
+
+- Node.js 18 or later
+- npm
+
+### Installation
+
+Clone the repository:
 
 ```bash
-  node -v
+git clone https://github.com/HensalDeon/react_portfolio.git
+cd react_portfolio
 ```
 
-#### Step 3:
-
-At the main folder execute the following command in console to get the required dependencies:
+Install dependencies:
 
 ```bash
-  npm install --legacy-peer-deps
+npm install --legacy-peer-deps
 ```
 
-#### Step 4:
-
-At the main folder execute the following command in console to creates a build directory with a production build of 3d portfolio:
+Start the development server:
 
 ```bash
-  npm run build
+npm run dev
 ```
 
-#### Step 5:
-
-At the main folder execute the following command in console to run the server:
+The app runs locally at:
 
 ```bash
-  npm run start
+http://localhost:3000
 ```
 
-<!-- Run Locally -->
-### :running: Run Locally
+## Environment Variables
 
-#### Step 1:
-
-At the main folder execute the following command in console to get the required dependencies:
+The contact form uses EmailJS. Create a `.env` file in the project root and add the following values:
 
 ```bash
-  npm install --legacy-peer-deps
+VITE_APP_EMAILJS_SERVICE_ID=your_emailjs_service_id
+VITE_APP_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+VITE_APP_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
 ```
 
-#### Step 2:
+Keep `.env` files private and do not commit production credentials.
 
-At the main folder execute the following command in console to run the development server:
+## Available Scripts
 
 ```bash
-  npm run dev
+npm run dev
 ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Starts the Vite development server.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+```bash
+npm run build
+```
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Creates an optimized production build in the `dist/` directory.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```bash
+npm run preview
+```
 
-<!-- Contact -->
-## :handshake: Contact
+Serves the production build locally for review.
 
-Hensal Deon - [hensal deon](https://www.linkedin.com/in/hensal-deon-472883227/)
+```bash
+npm run lint
+```
 
-Project Link - [Project Link](https://github.com/HensalDeon/react_portfolio)
+Runs ESLint across the project.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Customization
 
-<!-- Acknowledgments -->
-## :gem: Acknowledgements
+- Update personal details, roles, technologies, experience, and projects in `src/constants/index.js`.
+- Add or replace images, logos, project thumbnails, and technology icons in `src/assets/`.
+- Adjust colors, shadows, breakpoints, and background images in `tailwind.config.js`.
+- Modify page sections in `src/components/`.
+- Update 3D scenes in `src/components/canvas/` and model files in `public/`.
 
-This section used to mention useful resources and libraries that used in 3D Portfolio
+## Deployment
 
- - [Email JS](https://www.emailjs.com/)
- - [Framer Motion](https://www.framer.com/motion/)
- - [React Tilt](https://www.npmjs.com/package/react-tilt)
- - [React Vertical Timeline Component](https://www.npmjs.com/package/react-vertical-timeline-component)
- - #JSMastery
+Build the project before deployment:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```bash
+npm run build
+```
+
+Deploy the generated `dist/` folder to a static hosting provider such as Vercel, Netlify, or GitHub Pages.
+
+## Acknowledgements
+
+- [EmailJS](https://www.emailjs.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+- [Three.js](https://threejs.org/)
+- [React Tilt](https://www.npmjs.com/package/react-tilt)
+- [React Vertical Timeline Component](https://www.npmjs.com/package/react-vertical-timeline-component)
+- JavaScript Mastery for the original 3D portfolio inspiration.
+
+## Contact
+
+Hensal Deon
+
+- [LinkedIn](https://www.linkedin.com/in/hensal-deon-472883227/)
+- [GitHub Repository](https://github.com/HensalDeon/react_portfolio)
