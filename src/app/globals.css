@@ -14,6 +14,7 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-danger: var(--danger);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -26,6 +27,7 @@
   --line: #e3e0d8;
   --accent: #5b3df5;
   --accent-foreground: #ffffff;
+  --danger: #c93b34;
   color-scheme: light;
 }
 
@@ -37,6 +39,7 @@
   --line: #26262b;
   --accent: #9b86ff;
   --accent-foreground: #0b0b0d;
+  --danger: #ff7a72;
   color-scheme: dark;
 }
 

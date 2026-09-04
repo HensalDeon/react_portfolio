@@ -5,21 +5,18 @@ import { useCallback, useState } from "react";
 
 import { SceneFrame } from "@/components/three/scene-frame";
 
-const DesktopCanvas = dynamic(
-  () => import("@/components/three/desktop-canvas").then((mod) => mod.DesktopCanvas),
+const PlanetCanvas = dynamic(
+  () => import("@/components/three/planet-canvas").then((mod) => mod.PlanetCanvas),
   { ssr: false },
 );
 
-export function HeroScene() {
+export function PlanetScene() {
   const [ready, setReady] = useState(false);
   const handleReady = useCallback(() => setReady(true), []);
 
   return (
-    <SceneFrame
-      ready={ready}
-      className="mx-auto aspect-[4/3] max-w-xl lg:aspect-square lg:max-w-none"
-    >
-      <DesktopCanvas onReady={handleReady} />
+    <SceneFrame ready={ready} className="mx-auto aspect-square max-w-md lg:max-w-none">
+      <PlanetCanvas onReady={handleReady} />
     </SceneFrame>
   );
 }

@@ -2,7 +2,7 @@
 
 Personal portfolio built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, Motion and React Three Fiber.
 
-> **Status:** mid-redesign on the `feat/nextjs-revamp` branch. The foundation, navigation and hero are complete. About, Experience, Projects and Contact are placeholders and will be rebuilt next.
+> **Status:** redesign on the `feat/nextjs-revamp` branch. All sections are rebuilt: hero, about, experience, a filterable project grid and a contact form backed by EmailJS.
 
 ## Stack
 
@@ -56,7 +56,7 @@ src/
 ├── assets/               # Static image imports (typed via next/image)
 ├── components/
 │   ├── layout/           # Navbar, theme toggle, footer
-│   ├── sections/         # Page sections (hero, placeholders)
+│   ├── sections/         # Hero, about, experience, projects, contact
 │   ├── three/            # React Three Fiber scenes and error boundary
 │   ├── ui/               # Container, buttons, reveal, section heading
 │   └── providers/        # Theme provider
@@ -70,7 +70,7 @@ public/
 
 ## Content
 
-All copy and data lives in `src/content/`. Edit `site.ts` for name, role, tagline and social links, and `data.ts` for services, technologies, experience and projects. Images are imported through `src/assets/index.ts` so they get width, height and blur placeholders automatically.
+All copy and data lives in `src/content/`. Edit `site.ts` for name, role, tagline and social links, and `data.ts` for services, technologies, experience and projects. Images are imported through `src/assets/index.ts` so they get width, height and blur placeholders automatically. Screenshots are WebP at 1200px wide and icons at 128px, which keeps the whole folder near 1 MB.
 
 ## 3D models
 

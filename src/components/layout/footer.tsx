@@ -1,6 +1,11 @@
 import { Container } from "@/components/ui/container";
 import { site } from "@/content/site";
 
+const credits = [
+  { label: "Desktop model", author: "Yolala1232", href: "https://sketchfab.com/Yolala1232" },
+  { label: "Planet model", author: "cmzw", href: "https://sketchfab.com/cmzw" },
+];
+
 export function Footer() {
   return (
     <footer className="border-t border-line py-8">
@@ -9,15 +14,20 @@ export function Footer() {
           &copy; {new Date().getFullYear()} {site.name}
         </p>
         <p>
-          3D desktop model by{" "}
-          <a
-            href="https://sketchfab.com/Yolala1232"
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-line underline-offset-4 transition-colors hover:text-foreground"
-          >
-            Yolala1232
-          </a>
+          {credits.map((credit, index) => (
+            <span key={credit.author}>
+              {index > 0 && ", "}
+              {credit.label} by{" "}
+              <a
+                href={credit.href}
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-line underline-offset-4 transition-colors hover:text-foreground"
+              >
+                {credit.author}
+              </a>
+            </span>
+          ))}
           , CC BY 4.0
         </p>
       </Container>
