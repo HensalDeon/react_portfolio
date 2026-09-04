@@ -6,6 +6,7 @@ import { Suspense, useRef } from "react";
 import type { Group } from "three";
 
 import { useSceneVisible } from "@/components/three/scene-frame";
+import "@/components/three/three-console";
 import { useStagedScene } from "@/components/three/use-staged-scene";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
