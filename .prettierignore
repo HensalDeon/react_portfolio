@@ -1,0 +1,6 @@
+.next
+node_modules
+out
+public/models
+package-lock.json
+readme_asset
