@@ -8,7 +8,7 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ eyebrow, title }: SectionHeadingProps) {
   return (
-    <div className="max-w-2xl">
+    <div className="max-w-2xl w-full">
       <Parallax range={[12, -12]}>
         <p className="font-mono text-xs tracking-[0.2em] text-muted uppercase">{eyebrow}</p>
       </Parallax>

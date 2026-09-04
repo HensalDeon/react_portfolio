@@ -28,7 +28,6 @@ export function Footer() {
               </a>
             </span>
           ))}
-          , CC BY 4.0
         </p>
       </Container>
     </footer>
