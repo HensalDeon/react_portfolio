@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { LazyMount } from "@/components/ui/lazy-mount";
 import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -26,12 +27,14 @@ export function Experience() {
               <div className="md:col-span-9 lg:col-span-8">
                 <div className="flex items-center gap-4">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-line bg-white">
-                    <Image
-                      src={experience.icon}
-                      alt=""
-                      className="h-7 w-7 object-contain"
-                      sizes="44px"
-                    />
+                    <LazyMount className="inline-flex h-7 w-7">
+                      <Image
+                        src={experience.icon}
+                        alt=""
+                        className="h-7 w-7 object-contain"
+                        sizes="44px"
+                      />
+                    </LazyMount>
                   </span>
                   <div>
                     <h3 className="text-xl font-medium tracking-tight">{experience.title}</h3>

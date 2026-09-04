@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { useMounted } from "@/hooks/use-mounted";
+import { useInView } from "@/hooks/use-in-view";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 type SplitLinesProps = {
@@ -14,8 +14,6 @@ type SplitLinesProps = {
   stagger?: number;
 };
 
-const EASE = [0.16, 1, 0.3, 1] as const;
-
 /**
  * Reveals text one line at a time, each line sliding up from behind a mask.
  * Line breaks are measured from an invisible copy of the words at the real
@@ -23,18 +21,16 @@ const EASE = [0.16, 1, 0.3, 1] as const;
  * resize. Renders plain text when reduced motion is preferred.
  */
 export function SplitLines({ text, as: Tag = "h2", className, stagger = 0.08 }: SplitLinesProps) {
-  // Only honour the preference after mount so the client's first render matches the server.
-  const mounted = useMounted();
-  const reduced = useReducedMotion() === true && mounted;
-  const ref = useRef<HTMLHeadingElement>(null);
-  const [lines, setLines] = useState<string[] | null>(null);
+  const reduced = useReducedMotion();
+  const measureRef = useRef<HTMLSpanElement>(null);
   // Observe the heading, not the sliding spans: those sit fully clipped behind
   // their masks until revealed, so they would never intersect the viewport.
-  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const [ref, inView] = useInView<HTMLHeadingElement>({ once: true, amount: 0.5 });
+  const [lines, setLines] = useState<string[] | null>(null);
   const words = useMemo(() => text.split(/\s+/).filter(Boolean), [text]);
 
   useEffect(() => {
-    const element = ref.current;
+    const element = measureRef.current;
     if (!element || reduced) return;
 
     const measure = () => {
@@ -65,7 +61,11 @@ export function SplitLines({ text, as: Tag = "h2", className, stagger = 0.08 }: 
   return (
     <Tag ref={ref} className={cn("relative flex flex-col", className)}>
       <span className="sr-only">{text}</span>
-      <span aria-hidden className="pointer-events-none invisible absolute inset-x-0 top-0">
+      <span
+        ref={measureRef}
+        aria-hidden
+        className="pointer-events-none invisible absolute inset-x-0 top-0"
+      >
         {words.map((word, index) => (
           <span key={`${word}-${index}`}>
             <span data-word className="inline-block">
@@ -82,14 +82,15 @@ export function SplitLines({ text, as: Tag = "h2", className, stagger = 0.08 }: 
             aria-hidden
             className="-my-[0.15em] block overflow-hidden py-[0.15em]"
           >
-            <motion.span
-              className="block"
-              initial={inView ? false : { y: "110%" }}
-              animate={{ y: inView ? 0 : "110%" }}
-              transition={{ duration: 0.9, ease: EASE, delay: index * stagger }}
+            <span
+              className={cn(
+                "block transition-transform duration-900 ease-out-expo motion-reduce:transition-none",
+                inView ? "translate-y-0" : "translate-y-[110%]",
+              )}
+              style={{ transitionDelay: `${index * stagger}s` }}
             >
               {line}
-            </motion.span>
+            </span>
           </span>
         ))
       ) : (

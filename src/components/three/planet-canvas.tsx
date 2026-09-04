@@ -2,12 +2,12 @@
 
 import { Float, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useReducedMotion } from "motion/react";
 import { Suspense, useRef } from "react";
 import type { Group } from "three";
 
 import { useSceneVisible } from "@/components/three/scene-frame";
 import { useStagedScene } from "@/components/three/use-staged-scene";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 const MODEL_URL = "/models/planet.glb";
 const DRACO_PATH = "/draco/";

@@ -1,50 +1,79 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
-import { useMounted } from "@/hooks/use-mounted";
-
-type ScrollOffset = NonNullable<Parameters<typeof useScroll>[0]>["offset"];
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 type ParallaxProps = {
   children: ReactNode;
   className?: string;
   /** Pixel offset at the start and end of the scroll range. */
   range?: [number, number];
-  /** Scroll range relative to the viewport; defaults to the element's full pass through it. */
-  offset?: ScrollOffset;
+  /**
+   * Which part of the element's journey drives the effect: its full pass
+   * through the viewport, or only from when its top reaches the viewport top
+   * until it leaves (useful for content already on screen at load).
+   */
+  offset?: "enter-exit" | "top-exit";
 };
 
 /**
  * Nudges its children along the scroll axis as they pass through the viewport.
- * Native scrolling is untouched: motion reads the scroll position and applies
- * a transform, and reduced-motion users get a static element.
+ * Native scrolling is untouched: a passive scroll listener reads the layout
+ * position of an untransformed wrapper and applies a transform to the inner
+ * element on the next frame. Reduced-motion users get a static element.
  */
 export function Parallax({
   children,
   className,
   range = [24, -24],
-  offset = ["start end", "end start"],
+  offset = "enter-exit",
 }: ParallaxProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  // Only honour the preference after mount so the client's first render matches the server.
-  const mounted = useMounted();
-  const reduced = useReducedMotion() === true && mounted;
-  const { scrollYProgress } = useScroll({ target: ref, offset });
-  const y = useTransform(scrollYProgress, [0, 1], range);
+  const outer = useRef<HTMLDivElement>(null);
+  const inner = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const [from, to] = range;
 
-  if (reduced) {
-    return (
-      <div ref={ref} className={className}>
-        {children}
-      </div>
-    );
-  }
+  useEffect(() => {
+    const track = outer.current;
+    const target = inner.current;
+    if (!track || !target) return;
+    if (reduced) {
+      target.style.transform = "";
+      return;
+    }
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = track.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      const progress =
+        offset === "top-exit"
+          ? -rect.top / rect.height
+          : (viewport - rect.top) / (viewport + rect.height);
+      const t = Math.min(1, Math.max(0, progress));
+      target.style.transform = `translateY(${(from + (to - from) * t).toFixed(2)}px)`;
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, [reduced, offset, from, to]);
 
   return (
-    <motion.div ref={ref} className={className} style={{ y }}>
-      {children}
-    </motion.div>
+    <div ref={outer} className={className}>
+      <div ref={inner} className="will-change-transform">
+        {children}
+      </div>
+    </div>
   );
 }

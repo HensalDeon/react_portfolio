@@ -1,9 +1,8 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { hlogo } from "@/assets";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
@@ -29,6 +28,40 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
+  // The active pill is positioned imperatively so it can slide between links
+  // with a CSS transition instead of a layout-animation library.
+  const navRef = useRef<HTMLElement>(null);
+  const pillRef = useRef<HTMLSpanElement>(null);
+  const pillPlaced = useRef(false);
+  useEffect(() => {
+    const nav = navRef.current;
+    const pill = pillRef.current;
+    if (!nav || !pill) return;
+
+    const place = () => {
+      const link = nav.querySelector<HTMLElement>("[aria-current]");
+      if (!link) {
+        pill.style.opacity = "0";
+        return;
+      }
+      if (!pillPlaced.current) {
+        pill.style.transition = "none";
+        pillPlaced.current = true;
+        requestAnimationFrame(() => {
+          pill.style.transition = "";
+        });
+      }
+      pill.style.opacity = "1";
+      pill.style.width = `${link.offsetWidth}px`;
+      pill.style.transform = `translateX(${link.offsetLeft}px)`;
+    };
+
+    place();
+    const observer = new ResizeObserver(place);
+    observer.observe(nav);
+    return () => observer.disconnect();
+  }, [active]);
+
   const solid = scrolled || open;
   const close = () => setOpen(false);
 
@@ -51,7 +84,16 @@ export function Navbar() {
           <span className="text-sm font-medium tracking-tight">{site.name}</span>
         </a>
 
-        <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
+        <nav
+          ref={navRef}
+          aria-label="Primary"
+          className="relative hidden items-center gap-1 md:flex"
+        >
+          <span
+            ref={pillRef}
+            aria-hidden
+            className="absolute top-0 left-0 h-full w-0 rounded-full bg-subtle opacity-0 transition-[transform,width,opacity] duration-500 ease-out-expo motion-reduce:transition-none"
+          />
           {navLinks.map((link) => {
             const isActive = active === link.id;
             return (
@@ -64,13 +106,6 @@ export function Navbar() {
                   isActive ? "text-foreground" : "text-muted hover:text-foreground",
                 )}
               >
-                {isActive && (
-                  <motion.span
-                    layoutId="nav-active"
-                    className="absolute inset-0 rounded-full bg-subtle"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                  />
-                )}
                 <span className="relative">{link.label}</span>
               </a>
             );
@@ -99,38 +134,32 @@ export function Navbar() {
         </div>
       </Container>
 
-      <AnimatePresence>
-        {open && (
-          <motion.nav
-            id="mobile-nav"
-            aria-label="Mobile"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="border-t border-line md:hidden"
-          >
-            <Container className="flex flex-col gap-1 py-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.id}
-                  href={`#${link.id}`}
-                  onClick={close}
-                  className={cn(
-                    "rounded-lg px-3 py-3 text-base transition-colors hover:bg-subtle",
-                    active === link.id ? "text-foreground" : "text-muted",
-                  )}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <LinkButton href="#contact" onClick={close} className="mt-2">
-                Let&apos;s talk
-              </LinkButton>
-            </Container>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+      {open && (
+        <nav
+          id="mobile-nav"
+          aria-label="Mobile"
+          className="animate-menu-in border-t border-line motion-reduce:animate-none md:hidden"
+        >
+          <Container className="flex flex-col gap-1 py-3">
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={close}
+                className={cn(
+                  "rounded-lg px-3 py-3 text-base transition-colors hover:bg-subtle",
+                  active === link.id ? "text-foreground" : "text-muted",
+                )}
+              >
+                {link.label}
+              </a>
+            ))}
+            <LinkButton href="#contact" onClick={close} className="mt-2">
+              Let&apos;s talk
+            </LinkButton>
+          </Container>
+        </nav>
+      )}
     </header>
   );
 }

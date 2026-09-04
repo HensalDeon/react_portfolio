@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { LazyMount } from "@/components/ui/lazy-mount";
 import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -50,12 +51,14 @@ export function About() {
                 key={tech.name}
                 className="flex items-center gap-2 rounded-full border border-line py-1.5 pr-3.5 pl-2 text-sm"
               >
-                <Image
-                  src={tech.icon}
-                  alt=""
-                  className={cn("h-5 w-5 object-contain", tech.monochrome && "dark:invert")}
-                  sizes="20px"
-                />
+                <LazyMount className="inline-flex h-5 w-5 shrink-0">
+                  <Image
+                    src={tech.icon}
+                    alt=""
+                    className={cn("h-5 w-5 object-contain", tech.monochrome && "dark:invert")}
+                    sizes="20px"
+                  />
+                </LazyMount>
                 {tech.name}
               </li>
             ))}

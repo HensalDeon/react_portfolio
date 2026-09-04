@@ -1,9 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
 
-import { useMounted } from "@/hooks/use-mounted";
+import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 
 type RevealProps = {
@@ -17,13 +16,11 @@ type RevealProps = {
 /**
  * Eases content in. The mount variant is a pure CSS lift so server-rendered
  * text is visible (and counts as LCP) before any JavaScript runs; the in-view
- * variant fades and lifts through motion's viewport tracking. Both render
- * statically when reduced motion is preferred.
+ * variant fades and lifts through a CSS transition once an IntersectionObserver
+ * sees it. Both render statically when reduced motion is preferred.
  */
 export function Reveal({ children, delay = 0, className, inView = false }: RevealProps) {
-  // Only honour the preference after mount so the client's first render matches the server.
-  const mounted = useMounted();
-  const reduced = useReducedMotion() === true && mounted;
+  const [ref, visible] = useInView<HTMLDivElement>({ once: true, amount: 0.2 });
 
   if (!inView) {
     return (
@@ -36,19 +33,17 @@ export function Reveal({ children, delay = 0, className, inView = false }: Revea
     );
   }
 
-  if (reduced) {
-    return <div className={className}>{children}</div>;
-  }
-
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
+    <div
+      ref={ref}
+      className={cn(
+        "transition-[opacity,transform] duration-800 ease-out-expo motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none",
+        visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
+        className,
+      )}
+      style={delay ? { transitionDelay: `${delay}s` } : undefined}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

@@ -1,12 +1,12 @@
 "use client";
 
 import { ArrowUpRight, Code } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { projectCategories, type Project, type ProjectCategory } from "@/content/data";
+import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 
 type Filter = "All" | ProjectCategory;
@@ -16,7 +16,6 @@ const INITIAL_VISIBLE = 9;
 export function ProjectGrid({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<Filter>("All");
   const [expanded, setExpanded] = useState(false);
-  const reduced = useReducedMotion();
 
   const counts = useMemo(() => {
     const map = new Map<Filter, number>([["All", projects.length]]);
@@ -68,22 +67,11 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
         })}
       </div>
 
-      <motion.ul layout className="mt-8 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-        <AnimatePresence initial={false} mode="popLayout">
-          {visible.map((project) => (
-            <motion.li
-              key={project.name}
-              layout={!reduced}
-              initial={reduced ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={reduced ? undefined : { opacity: 0, y: -8 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <ProjectCard project={project} />
-            </motion.li>
-          ))}
-        </AnimatePresence>
-      </motion.ul>
+      <ul className="mt-8 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        {visible.map((project, index) => (
+          <ProjectItem key={`${filter}-${project.name}`} project={project} index={index} />
+        ))}
+      </ul>
 
       {truncated && (
         <div className="mt-12 flex justify-center">
@@ -93,6 +81,26 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
         </div>
       )}
     </div>
+  );
+}
+
+const COLUMNS = 3;
+
+/** Rises into view when scrolled to, staggered across the row it sits in. */
+function ProjectItem({ project, index }: { project: Project; index: number }) {
+  const [ref, inView] = useInView<HTMLLIElement>({ once: true, amount: 0.15 });
+
+  return (
+    <li
+      ref={ref}
+      className={cn(
+        "transition-[opacity,transform] duration-700 ease-out-expo motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none",
+        inView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
+      )}
+      style={{ transitionDelay: `${(index % COLUMNS) * 90}ms` }}
+    >
+      <ProjectCard project={project} />
+    </li>
   );
 }
 

@@ -88,7 +88,7 @@ export function Hero() {
         </div>
 
         <Reveal delay={0.25} className="lg:col-span-5">
-          <Parallax offset={["start start", "end start"]} range={[0, -64]}>
+          <Parallax offset="top-exit" range={[0, -64]}>
             <HeroScene />
           </Parallax>
         </Reveal>
