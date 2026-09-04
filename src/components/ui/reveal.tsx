@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
 
+import { useMounted } from "@/hooks/use-mounted";
 import { cn } from "@/lib/utils";
 
 type RevealProps = {
@@ -20,7 +21,9 @@ type RevealProps = {
  * statically when reduced motion is preferred.
  */
 export function Reveal({ children, delay = 0, className, inView = false }: RevealProps) {
-  const reduced = useReducedMotion();
+  // Only honour the preference after mount so the client's first render matches the server.
+  const mounted = useMounted();
+  const reduced = useReducedMotion() === true && mounted;
 
   if (!inView) {
     return (

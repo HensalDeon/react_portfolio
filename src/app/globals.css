@@ -82,6 +82,20 @@
   animation: reveal-up 0.8s var(--ease-out-expo) both;
 }
 
+/* Masked line reveal for the hero headline; transform only, same LCP reasoning as above. */
+@keyframes line-up {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@utility animate-line-up {
+  animation: line-up 0.9s var(--ease-out-expo) both;
+}
+
 @keyframes scroll-hint {
   0% {
     transform: translateY(-100%);

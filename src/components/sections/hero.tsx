@@ -7,6 +7,14 @@ import { Reveal } from "@/components/ui/reveal";
 import { experiences, projects } from "@/content/data";
 import { site } from "@/content/site";
 
+const headline = [
+  <>
+    Fast, <em className="text-accent">considered</em>
+  </>,
+  "web experiences for",
+  "ambitious brands.",
+];
+
 const stats = [
   { value: `${projects.length}+`, label: "Projects shipped" },
   { value: String(experiences.length), label: "Teams worked with" },
@@ -25,12 +33,23 @@ export function Hero() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <h1 className="font-serif text-[clamp(3rem,7.5vw,6.5rem)] leading-[0.95] tracking-[-0.02em] text-balance">
-              Fast, <em className="text-accent">considered</em> web experiences for ambitious
-              brands.
-            </h1>
-          </Reveal>
+          <h1 className="flex flex-col font-serif text-[clamp(3rem,7.5vw,6.5rem)] leading-[0.95] tracking-[-0.02em]">
+            <span className="sr-only">Fast, considered web experiences for ambitious brands.</span>
+            {headline.map((line, index) => (
+              <span
+                key={index}
+                aria-hidden
+                className="-my-[0.15em] block overflow-hidden py-[0.15em]"
+              >
+                <span
+                  className="block animate-line-up motion-reduce:animate-none"
+                  style={{ animationDelay: `${0.1 + index * 0.08}s` }}
+                >
+                  {line}
+                </span>
+              </span>
+            ))}
+          </h1>
 
           <Reveal delay={0.2}>
             <p className="max-w-xl text-lg leading-relaxed text-muted">{site.intro}</p>
