@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --background: #faf9f6;
+  --foreground: #121212;
+  --muted: #5f5e5a;
+  --subtle: #f0eee8;
+  --line: #e3e0d8;
+  --accent: #5b3df5;
+  --accent-foreground: #ffffff;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #0b0b0d;
+  --foreground: #f3f2ee;
+  --muted: #9b9a95;
+  --subtle: #17171b;
+  --line: #26262b;
+  --accent: #9b86ff;
+  --accent-foreground: #0b0b0d;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 22%, transparent);
+  }
+}
+
+@keyframes scroll-hint {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+@layer components {
+  .hero-glow {
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in oklab, var(--accent) 16%, transparent),
+      transparent 65%
+    );
+  }
+}
