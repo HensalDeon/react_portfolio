@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { services, technologies } from "@/content/data";
 import { site } from "@/content/site";
+import { cn } from "@/lib/utils";
 
 export function About() {
   return (
@@ -49,7 +50,12 @@ export function About() {
                 key={tech.name}
                 className="flex items-center gap-2 rounded-full border border-line py-1.5 pr-3.5 pl-2 text-sm"
               >
-                <Image src={tech.icon} alt="" className="h-5 w-5 object-contain" sizes="20px" />
+                <Image
+                  src={tech.icon}
+                  alt=""
+                  className={cn("h-5 w-5 object-contain", tech.monochrome && "dark:invert")}
+                  sizes="20px"
+                />
                 {tech.name}
               </li>
             ))}

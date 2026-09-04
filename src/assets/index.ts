@@ -16,6 +16,13 @@ import redux from "./tech/redux.webp";
 import tailwind from "./tech/tailwind.webp";
 import typescript from "./tech/typescript.webp";
 import threejs from "./tech/threejs.svg";
+import wordpress from "./tech/wordpress.svg";
+import webflow from "./tech/webflow.svg";
+import sass from "./tech/sass.svg";
+import github from "./tech/github.svg";
+import gitlab from "./tech/gitlab.svg";
+import vercel from "./tech/vercel.svg";
+import sanity from "./tech/sanity.svg";
 
 // Companies
 import brototype from "./company/brototype.webp";
@@ -61,6 +68,13 @@ export {
   tailwind,
   typescript,
   threejs,
+  wordpress,
+  webflow,
+  sass,
+  github,
+  gitlab,
+  vercel,
+  sanity,
   brototype,
   eightysixmedia,
   trusttech,

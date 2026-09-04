@@ -12,6 +12,13 @@ import {
   git,
   figma,
   threejs,
+  wordpress,
+  webflow,
+  sass,
+  github,
+  gitlab,
+  vercel,
+  sanity,
   nextjs,
   brototype,
   trusttech,
@@ -42,7 +49,12 @@ import {
 import type { StaticImageData } from "next/image";
 
 export type Service = { title: string; description: string };
-export type Technology = { name: string; icon: StaticImageData };
+export type Technology = {
+  name: string;
+  icon: StaticImageData;
+  /** Near-black brand mark that needs inverting on the dark theme. */
+  monochrome?: boolean;
+};
 export type Experience = {
   title: string;
   company: string;
@@ -134,10 +146,42 @@ export const technologies: Technology[] = [
   {
     name: "Three JS",
     icon: threejs,
+    monochrome: true,
+  },
+  {
+    name: "WordPress",
+    icon: wordpress,
+  },
+  {
+    name: "Webflow",
+    icon: webflow,
+  },
+  {
+    name: "Sanity CMS",
+    icon: sanity,
+    monochrome: true,
+  },
+  {
+    name: "Sass",
+    icon: sass,
+  },
+  {
+    name: "Vercel",
+    icon: vercel,
+    monochrome: true,
   },
   {
     name: "git",
     icon: git,
+  },
+  {
+    name: "GitHub",
+    icon: github,
+    monochrome: true,
+  },
+  {
+    name: "GitLab",
+    icon: gitlab,
   },
   {
     name: "figma",
@@ -153,6 +197,9 @@ export const experiences: Experience[] = [
     date: "October 2025 - Present",
     points: [
       "Develop web applications using Webflow, React.js, and Next.js.",
+      "Integrated Spline scenes to bring interactive 3D into marketing sites.",
+      "Manage maintenance projects across platforms including Next.js, WordPress and Webflow.",
+      "Use AI tooling such as Claude, Cursor and Antigravity for fast-paced development.",
       "Utilized TailwindCSS and CSS for responsive and scalable styling.",
     ],
   },
