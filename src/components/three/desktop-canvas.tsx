@@ -3,8 +3,11 @@
 import { ContactShadows, Float, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useReducedMotion } from "motion/react";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useCallback, useRef, useState } from "react";
 import { MathUtils, type Group } from "three";
+
+import { useSceneVisible } from "@/components/three/scene-frame";
+import { useStagedScene } from "@/components/three/use-staged-scene";
 
 const MODEL_URL = "/models/desktop-pc.glb";
 const DRACO_PATH = "/draco/";
@@ -14,11 +17,8 @@ type DesktopProps = { animate: boolean; onReady?: () => void };
 
 function Desktop({ animate, onReady }: DesktopProps) {
   const { scene } = useGLTF(MODEL_URL, DRACO_PATH);
+  const ready = useStagedScene(scene, onReady);
   const group = useRef<Group>(null);
-
-  useEffect(() => {
-    onReady?.();
-  }, [onReady]);
 
   useFrame((state, delta) => {
     if (!group.current || !animate) return;
@@ -29,7 +29,7 @@ function Desktop({ animate, onReady }: DesktopProps) {
   });
 
   return (
-    <group ref={group} rotation={[0, REST_ROTATION_Y, 0]}>
+    <group ref={group} rotation={[0, REST_ROTATION_Y, 0]} visible={ready}>
       <primitive object={scene} scale={0.62} position={[0, -2.4, -0.4]} />
     </group>
   );
@@ -37,7 +37,16 @@ function Desktop({ animate, onReady }: DesktopProps) {
 
 export function DesktopCanvas({ onReady }: { onReady?: () => void }) {
   const reduced = useReducedMotion();
+  const visible = useSceneVisible();
   const animate = !reduced;
+  const running = animate && visible;
+
+  // The shadow is baked in a single pass, so it must wait for the model to show.
+  const [modelReady, setModelReady] = useState(false);
+  const handleReady = useCallback(() => {
+    setModelReady(true);
+    onReady?.();
+  }, [onReady]);
 
   return (
     <div className="absolute inset-0">
@@ -45,7 +54,7 @@ export function DesktopCanvas({ onReady }: { onReady?: () => void }) {
         dpr={[1, 1.75]}
         camera={{ position: [24, 5, 6], fov: 22 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-        frameloop={animate ? "always" : "demand"}
+        frameloop={running ? "always" : "demand"}
       >
         <hemisphereLight intensity={2.5} groundColor="black" />
         <spotLight position={[-20, 50, 10]} angle={0.12} penumbra={1} intensity={1.2} />
@@ -56,9 +65,18 @@ export function DesktopCanvas({ onReady }: { onReady?: () => void }) {
             rotationIntensity={animate ? 0.15 : 0}
             floatIntensity={animate ? 0.4 : 0}
           >
-            <Desktop animate={animate} onReady={onReady} />
+            <Desktop animate={animate} onReady={handleReady} />
           </Float>
-          <ContactShadows position={[0, -2.45, 0]} opacity={0.45} scale={22} blur={2.6} far={5} />
+          {modelReady && (
+            <ContactShadows
+              position={[0, -2.45, 0]}
+              opacity={0.45}
+              scale={22}
+              blur={2.6}
+              far={5}
+              frames={1}
+            />
+          )}
         </Suspense>
       </Canvas>
     </div>

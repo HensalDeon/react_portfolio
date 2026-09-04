@@ -47,7 +47,7 @@ export function Navbar() {
           className="flex items-center gap-2.5 rounded-full focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
           onClick={close}
         >
-          <Image src={hlogo} alt="" className="h-6 w-auto" priority />
+          <Image src={hlogo} alt="" className="h-6 w-auto" sizes="32px" priority />
           <span className="text-sm font-medium tracking-tight">{site.name}</span>
         </a>
 

@@ -49,7 +49,7 @@ export function About() {
                 key={tech.name}
                 className="flex items-center gap-2 rounded-full border border-line py-1.5 pr-3.5 pl-2 text-sm"
               >
-                <Image src={tech.icon} alt="" className="h-5 w-5 object-contain" />
+                <Image src={tech.icon} alt="" className="h-5 w-5 object-contain" sizes="20px" />
                 {tech.name}
               </li>
             ))}

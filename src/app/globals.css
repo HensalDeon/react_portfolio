@@ -63,6 +63,25 @@
   }
 }
 
+/*
+ * Lift-only entrance for above-the-fold content. It runs from CSS alone so the
+ * hero paints before hydration, and it deliberately leaves opacity untouched:
+ * a compositor-driven fade from opacity 0 never produces a main-thread paint,
+ * so Chrome would exclude the hero text from Largest Contentful Paint.
+ */
+@keyframes reveal-up {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@utility animate-reveal {
+  animation: reveal-up 0.8s var(--ease-out-expo) both;
+}
+
 @keyframes scroll-hint {
   0% {
     transform: translateY(-100%);
