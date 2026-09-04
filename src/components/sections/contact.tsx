@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { ContactForm } from "@/components/sections/contact-form";
 import { PlanetScene } from "@/components/three/planet-scene";
+import { Parallax } from "@/components/ui/parallax";
 import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -32,7 +33,9 @@ export function Contact() {
       </Reveal>
 
       <Reveal inView delay={0.1} className="lg:col-span-5 lg:col-start-8 lg:self-center">
-        <PlanetScene />
+        <Parallax range={[48, -48]}>
+          <PlanetScene />
+        </Parallax>
       </Reveal>
     </Section>
   );

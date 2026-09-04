@@ -2,6 +2,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 import { HeroScene } from "@/components/three/hero-scene";
 import { LinkButton } from "@/components/ui/button";
+import { Parallax } from "@/components/ui/parallax";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { experiences, projects } from "@/content/data";
@@ -87,7 +88,9 @@ export function Hero() {
         </div>
 
         <Reveal delay={0.25} className="lg:col-span-5">
-          <HeroScene />
+          <Parallax offset={["start start", "end start"]} range={[0, -64]}>
+            <HeroScene />
+          </Parallax>
         </Reveal>
       </Container>
 

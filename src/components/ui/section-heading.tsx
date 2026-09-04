@@ -1,3 +1,4 @@
+import { Parallax } from "@/components/ui/parallax";
 import { SplitLines } from "@/components/ui/split-lines";
 
 type SectionHeadingProps = {
@@ -8,7 +9,9 @@ type SectionHeadingProps = {
 export function SectionHeading({ eyebrow, title }: SectionHeadingProps) {
   return (
     <div className="max-w-2xl">
-      <p className="font-mono text-xs tracking-[0.2em] text-muted uppercase">{eyebrow}</p>
+      <Parallax range={[12, -12]}>
+        <p className="font-mono text-xs tracking-[0.2em] text-muted uppercase">{eyebrow}</p>
+      </Parallax>
       <SplitLines
         as="h2"
         text={title}
