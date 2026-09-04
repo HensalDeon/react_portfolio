@@ -1,177 +1,92 @@
 # Hensal Deon Portfolio
 
-A modern, responsive developer portfolio built with React, Vite, Tailwind CSS, and Three.js. The site presents professional experience, technical skills, selected projects, and a contact flow through an animated, interactive web experience.
+Personal portfolio built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, Motion and React Three Fiber.
 
-![Portfolio preview](readme_asset/3d-porfolio.png)
+> **Status:** mid-redesign on the `feat/nextjs-revamp` branch. The foundation, navigation and hero are complete. About, Experience, Projects and Contact are placeholders and will be rebuilt next.
 
-## Table of Contents
+## Stack
 
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [Available Scripts](#available-scripts)
-- [Customization](#customization)
-- [Deployment](#deployment)
-- [Acknowledgements](#acknowledgements)
-- [Contact](#contact)
+| Area      | Choice                                                     |
+| --------- | ---------------------------------------------------------- |
+| Framework | Next.js 16 (App Router, static rendering), React 19        |
+| Language  | TypeScript, strict mode                                    |
+| Styling   | Tailwind CSS 4 with CSS variable design tokens             |
+| Motion    | Motion (formerly Framer Motion)                            |
+| 3D        | Three.js, React Three Fiber 9, Drei, Draco compressed glTF |
+| Theming   | next-themes, light and dark with system default            |
+| Fonts     | Geist Sans, Geist Mono, Instrument Serif via `next/font`   |
+| Tooling   | ESLint 9 flat config, Prettier with Tailwind plugin        |
 
-## Overview
-
-This portfolio is designed to showcase frontend engineering work through a polished single-page experience. It includes a 3D hero scene, professional timeline, technology showcase, project carousel, and EmailJS-powered contact form.
-
-## Features
-
-- Interactive 3D hero and background visuals using Three.js and React Three Fiber.
-- Responsive layout optimized for desktop, tablet, and mobile screens.
-- Animated page sections powered by Framer Motion.
-- Work experience timeline with company branding and role highlights.
-- Project carousel with live links, technology tags, and visual previews.
-- Contact form with Formik validation, Yup schema checks, EmailJS integration, and toast feedback.
-- Centralized content management through reusable constants and asset exports.
-
-## Tech Stack
-
-| Category | Technologies |
-| --- | --- |
-| Frontend | React 18, Vite, React Router |
-| Styling | Tailwind CSS, PostCSS, Autoprefixer |
-| 3D & Motion | Three.js, React Three Fiber, Drei, Framer Motion, Maath, React Tilt |
-| Forms | Formik, Yup, EmailJS, React Hot Toast |
-| UI Components | Swiper, React Vertical Timeline Component |
-| Tooling | ESLint, npm |
-
-## Project Structure
+## Getting started
 
 ```bash
-.
-├── public/
-│   ├── desktop_pc/          # 3D desktop model assets
-│   └── planet/              # 3D planet model assets
-├── readme_asset/            # README preview assets
-├── src/
-│   ├── assets/              # Images, icons, logos, and tech assets
-│   ├── components/          # Reusable UI sections and layout components
-│   ├── components/canvas/   # Three.js canvas components
-│   ├── constants/           # Navigation, skills, experience, and project data
-│   ├── hoc/                 # Section wrapper utilities
-│   ├── hooks/               # Reusable React hooks
-│   ├── utils/               # Animation and validation helpers
-│   ├── App.jsx
-│   ├── index.css
-│   ├── main.jsx
-│   └── styles.js
-├── index.html
-├── package.json
-├── tailwind.config.js
-└── vite.config.js
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18 or later
-- npm
-
-### Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/HensalDeon/react_portfolio.git
-cd react_portfolio
-```
-
-Install dependencies:
-
-```bash
-npm install --legacy-peer-deps
-```
-
-Start the development server:
-
-```bash
+npm install
+cp .env.example .env   # then fill in values
 npm run dev
 ```
 
-The app runs locally at:
+The site runs at `http://localhost:3000`.
 
-```bash
-http://localhost:3000
+## Scripts
+
+| Command                | What it does                        |
+| ---------------------- | ----------------------------------- |
+| `npm run dev`          | Start the development server        |
+| `npm run build`        | Production build with type checking |
+| `npm run start`        | Serve the production build          |
+| `npm run lint`         | ESLint                              |
+| `npm run typecheck`    | TypeScript without emitting         |
+| `npm run format`       | Prettier, write mode                |
+| `npm run format:check` | Prettier, check mode                |
+
+## Environment variables
+
+| Variable                          | Purpose                                        |
+| --------------------------------- | ---------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`            | Canonical URL used for metadata and Open Graph |
+| `NEXT_PUBLIC_EMAILJS_SERVICE_ID`  | EmailJS service for the contact form           |
+| `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID` | EmailJS template for the contact form          |
+| `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`  | EmailJS public key                             |
+
+## Project structure
+
+```
+src/
+├── app/                  # App Router: layout, page, globals.css, OG image, favicon
+├── assets/               # Static image imports (typed via next/image)
+├── components/
+│   ├── layout/           # Navbar, theme toggle, footer
+│   ├── sections/         # Page sections (hero, placeholders)
+│   ├── three/            # React Three Fiber scenes and error boundary
+│   ├── ui/               # Container, buttons, reveal, section heading
+│   └── providers/        # Theme provider
+├── content/              # Typed site content: site.ts, nav.ts, data.ts
+├── hooks/                # useScrolled, useActiveSection, useMounted
+└── lib/                  # Small utilities
+public/
+├── draco/                # Self-hosted Draco decoder for compressed models
+└── models/               # Compressed glTF binaries and their licences
 ```
 
-## Environment Variables
+## Content
 
-The contact form uses EmailJS. Create a `.env` file in the project root and add the following values:
+All copy and data lives in `src/content/`. Edit `site.ts` for name, role, tagline and social links, and `data.ts` for services, technologies, experience and projects. Images are imported through `src/assets/index.ts` so they get width, height and blur placeholders automatically.
 
-```bash
-VITE_APP_EMAILJS_SERVICE_ID=your_emailjs_service_id
-VITE_APP_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
-VITE_APP_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
-```
+## 3D models
 
-Keep `.env` files private and do not commit production credentials.
-
-## Available Scripts
+Models in `public/models/` are compressed copies of the Sketchfab originals (Draco geometry, WebP textures capped at 1024px). They were produced with:
 
 ```bash
-npm run dev
+npx @gltf-transform/cli optimize scene.gltf out.glb --compress draco --texture-compress webp --texture-size 1024
 ```
 
-Starts the Vite development server.
-
-```bash
-npm run build
-```
-
-Creates an optimized production build in the `dist/` directory.
-
-```bash
-npm run preview
-```
-
-Serves the production build locally for review.
-
-```bash
-npm run lint
-```
-
-Runs ESLint across the project.
-
-## Customization
-
-- Update personal details, roles, technologies, experience, and projects in `src/constants/index.js`.
-- Add or replace images, logos, project thumbnails, and technology icons in `src/assets/`.
-- Adjust colors, shadows, breakpoints, and background images in `tailwind.config.js`.
-- Modify page sections in `src/components/`.
-- Update 3D scenes in `src/components/canvas/` and model files in `public/`.
+Both models are CC BY 4.0. Attribution is in `public/models/LICENSES.md` and shown in the site footer.
 
 ## Deployment
 
-Build the project before deployment:
-
-```bash
-npm run build
-```
-
-Deploy the generated `dist/` folder to a static hosting provider such as Vercel, Netlify, or GitHub Pages.
-
-## Acknowledgements
-
-- [EmailJS](https://www.emailjs.com/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
-- [Three.js](https://threejs.org/)
-- [React Tilt](https://www.npmjs.com/package/react-tilt)
-- [React Vertical Timeline Component](https://www.npmjs.com/package/react-vertical-timeline-component)
-- JavaScript Mastery for the original 3D portfolio inspiration.
+Any Next.js host works. Vercel needs no configuration. Set `NEXT_PUBLIC_SITE_URL` to the production domain so Open Graph URLs resolve correctly.
 
 ## Contact
 
-Hensal Deon
-
 - [LinkedIn](https://www.linkedin.com/in/hensal-deon-472883227/)
-- [GitHub Repository](https://github.com/HensalDeon/react_portfolio)
+- [GitHub](https://github.com/HensalDeon)
