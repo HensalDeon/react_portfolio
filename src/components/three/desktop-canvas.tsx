@@ -30,7 +30,7 @@ function Desktop({ animate, onReady }: DesktopProps) {
 
   return (
     <group ref={group} rotation={[0, REST_ROTATION_Y, 0]} visible={ready}>
-      <primitive object={scene} scale={0.63} position={[0, -1.7, -1.1]} />
+      <primitive object={scene} scale={0.82} position={[0, -1.7, -1.4]} />
     </group>
   );
 }
