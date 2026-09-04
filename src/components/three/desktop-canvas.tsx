@@ -30,7 +30,7 @@ function Desktop({ animate, onReady }: DesktopProps) {
 
   return (
     <group ref={group} rotation={[0, REST_ROTATION_Y, 0]} visible={ready}>
-      <primitive object={scene} scale={0.62} position={[0, -2.4, -0.4]} />
+      <primitive object={scene} scale={0.63} position={[0, -1.7, -1.1]} />
     </group>
   );
 }
@@ -52,7 +52,7 @@ export function DesktopCanvas({ onReady }: { onReady?: () => void }) {
     <div className="absolute inset-0">
       <Canvas
         dpr={[1, 1.75]}
-        camera={{ position: [24, 5, 6], fov: 22 }}
+        camera={{ position: [24, 5, 6], fov: 27 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         frameloop={running ? "always" : "demand"}
       >
@@ -69,7 +69,7 @@ export function DesktopCanvas({ onReady }: { onReady?: () => void }) {
           </Float>
           {modelReady && (
             <ContactShadows
-              position={[0, -2.45, 0]}
+              position={[0, -1.75, 0]}
               opacity={0.45}
               scale={22}
               blur={2.6}
