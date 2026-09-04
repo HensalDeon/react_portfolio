@@ -129,3 +129,78 @@
     );
   }
 }
+
+/*
+ * Preloader. The curtain is taller than the viewport so its elliptical bottom
+ * edge sits off-screen until it lifts, which gives the exit a curved sweep.
+ * Timings are relative to page load; `--intro-delay` on <html> keeps the hero
+ * entrance in step with the curtain (see components/brand/preloader.tsx).
+ */
+.preloader {
+  height: 112svh;
+  border-bottom-left-radius: 50% 10svh;
+  border-bottom-right-radius: 50% 10svh;
+  animation: preloader-exit 1s var(--ease-out-expo) var(--intro-delay, 1.85s) both;
+  will-change: transform;
+}
+
+@keyframes preloader-exit {
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.preloader-content {
+  animation: preloader-lift 0.6s var(--ease-out-expo) calc(var(--intro-delay, 1.85s) - 0.15s) both;
+}
+
+@keyframes preloader-lift {
+  to {
+    transform: translateY(-2.5rem);
+    opacity: 0;
+  }
+}
+
+.preloader-mark path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: preloader-draw 0.7s var(--ease-out-expo) both;
+}
+
+.preloader-mark path:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.preloader-mark path:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.preloader-mark path:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+@keyframes preloader-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.preloader-line {
+  animation: line-up 0.8s var(--ease-out-expo) 0.6s both;
+}
+
+@keyframes preloader-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    animation: preloader-fade 0.4s ease-out 0.5s both;
+  }
+  .preloader-content,
+  .preloader-line,
+  .preloader-mark path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

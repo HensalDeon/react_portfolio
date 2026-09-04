@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 
+import { monogramDataUrl } from "@/components/brand/monogram";
 import { site } from "@/content/site";
 
 export const alt = `${site.name}, ${site.role}`;
@@ -33,7 +34,12 @@ export default function OpenGraphImage() {
           fontFamily: "monospace",
         }}
       >
-        <div style={{ width: 12, height: 12, borderRadius: 999, background: "#9b86ff" }} />
+        <img
+          alt=""
+          width={44}
+          height={44}
+          src={monogramDataUrl({ foreground: "#f3f2ee", accent: "#9b86ff", strokeWidth: 6 })}
+        />
         {site.role} at {site.company}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>

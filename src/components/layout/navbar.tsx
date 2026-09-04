@@ -1,10 +1,9 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-import { hlogo } from "@/assets";
+import { Monogram } from "@/components/brand/monogram";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { LinkButton } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -77,10 +76,10 @@ export function Navbar() {
       <Container className="flex h-16 items-center justify-between lg:h-20">
         <a
           href="#top"
-          className="flex items-center gap-2.5 rounded-full focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+          className="group flex items-center gap-2.5 rounded-full focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
           onClick={close}
         >
-          <Image src={hlogo} alt="" className="h-6 w-auto" sizes="32px" priority />
+          <Monogram className="h-7 w-7 transition-transform duration-500 ease-out-expo group-hover:rotate-[-6deg]" />
           <span className="text-sm font-medium tracking-tight">{site.name}</span>
         </a>
 

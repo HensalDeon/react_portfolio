@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
+import { INTRO_DELAY_S } from "@/components/brand/intro";
+import { Preloader } from "@/components/brand/preloader";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { site } from "@/content/site";
 
@@ -46,9 +48,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
+      style={{ "--intro-delay": `${INTRO_DELAY_S}s` } as CSSProperties}
     >
       <body>
         <ThemeProvider>
+          <Preloader />
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-full focus:bg-foreground focus:px-4 focus:py-2 focus:text-sm focus:text-background"

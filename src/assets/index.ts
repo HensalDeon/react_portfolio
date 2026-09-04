@@ -1,6 +1,3 @@
-// Brand
-import hlogo from "./hlogo.webp";
-
 // Technologies
 import css from "./tech/css.webp";
 import figma from "./tech/figma.webp";
@@ -53,7 +50,6 @@ import trsutcapital from "./trsutcapital.webp";
 import wac from "./wac.webp";
 
 export {
-  hlogo,
   css,
   figma,
   firebase,

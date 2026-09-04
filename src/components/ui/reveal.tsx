@@ -15,7 +15,8 @@ type RevealProps = {
 
 /**
  * Eases content in. The mount variant is a pure CSS lift so server-rendered
- * text is visible (and counts as LCP) before any JavaScript runs; the in-view
+ * text is visible (and counts as LCP) before any JavaScript runs; it waits on
+ * `--intro-delay` so it plays once the preloader curtain lifts. The in-view
  * variant fades and lifts through a CSS transition once an IntersectionObserver
  * sees it. Both render statically when reduced motion is preferred.
  */
@@ -26,7 +27,7 @@ export function Reveal({ children, delay = 0, className, inView = false }: Revea
     return (
       <div
         className={cn("animate-reveal motion-reduce:animate-none", className)}
-        style={delay ? { animationDelay: `${delay}s` } : undefined}
+        style={{ animationDelay: `calc(var(--intro-delay, 0s) + ${delay}s)` }}
       >
         {children}
       </div>

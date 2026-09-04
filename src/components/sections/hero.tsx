@@ -44,7 +44,9 @@ export function Hero() {
               >
                 <span
                   className="block animate-line-up motion-reduce:animate-none"
-                  style={{ animationDelay: `${0.1 + index * 0.08}s` }}
+                  style={{
+                    animationDelay: `calc(var(--intro-delay, 0s) + ${0.1 + index * 0.08}s)`,
+                  }}
                 >
                   {line}
                 </span>
