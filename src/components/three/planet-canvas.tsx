@@ -6,17 +6,15 @@ import { Suspense, useRef } from "react";
 import type { Group } from "three";
 
 import { useSceneVisible } from "@/components/three/scene-frame";
+import { DRACO_PATH, PLANET_MODEL_URL } from "@/components/three/models";
 import "@/components/three/three-console";
 import { useStagedScene } from "@/components/three/use-staged-scene";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
-const MODEL_URL = "/models/planet.glb";
-const DRACO_PATH = "/draco/";
-
 type PlanetProps = { animate: boolean; onReady?: () => void };
 
 function Planet({ animate, onReady }: PlanetProps) {
-  const { scene } = useGLTF(MODEL_URL, DRACO_PATH);
+  const { scene } = useGLTF(PLANET_MODEL_URL, DRACO_PATH);
   const ready = useStagedScene(scene, onReady);
   const group = useRef<Group>(null);
 
@@ -58,4 +56,4 @@ export function PlanetCanvas({ onReady }: { onReady?: () => void }) {
   );
 }
 
-useGLTF.preload(MODEL_URL, DRACO_PATH);
+useGLTF.preload(PLANET_MODEL_URL, DRACO_PATH);

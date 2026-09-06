@@ -6,18 +6,17 @@ import { Suspense, useCallback, useRef, useState } from "react";
 import { MathUtils, type Group } from "three";
 
 import { useSceneVisible } from "@/components/three/scene-frame";
+import { DESKTOP_MODEL_URL, DRACO_PATH } from "@/components/three/models";
 import "@/components/three/three-console";
 import { useStagedScene } from "@/components/three/use-staged-scene";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
-const MODEL_URL = "/models/desktop-pc.glb";
-const DRACO_PATH = "/draco/";
 const REST_ROTATION_Y = -0.35;
 
 type DesktopProps = { animate: boolean; onReady?: () => void };
 
 function Desktop({ animate, onReady }: DesktopProps) {
-  const { scene } = useGLTF(MODEL_URL, DRACO_PATH);
+  const { scene } = useGLTF(DESKTOP_MODEL_URL, DRACO_PATH);
   const ready = useStagedScene(scene, onReady);
   const group = useRef<Group>(null);
 
@@ -84,4 +83,4 @@ export function DesktopCanvas({ onReady }: { onReady?: () => void }) {
   );
 }
 
-useGLTF.preload(MODEL_URL, DRACO_PATH);
+useGLTF.preload(DESKTOP_MODEL_URL, DRACO_PATH);

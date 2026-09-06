@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState, type RefObject } from "react";
 
+import { whenIntroDone } from "@/components/brand/intro-signal";
+
 export type SceneStatus = "waiting" | "mounted" | "skipped";
 
 type DeferredScene = {
@@ -20,8 +22,8 @@ function prefersLightweight(): boolean {
 
 /**
  * Keeps a WebGL scene (and the Three.js bundle behind it) off the critical
- * path: the scene mounts once its container is near the viewport and the
- * browser has gone idle after hydration. Users who opted into data saving
+ * path: the scene mounts once its container is near the viewport, the intro
+ * curtain has lifted and the browser has gone idle. Users who opted into data saving
  * never load it. `nearViewport` keeps tracking so callers can pause the
  * render loop while the scene is scrolled away.
  */
@@ -51,12 +53,20 @@ export function useDeferredScene(rootMargin = "200px"): DeferredScene {
     if (!nearViewport || status !== "waiting") return;
 
     const mount = () => setStatus(prefersLightweight() ? "skipped" : "mounted");
-    if (typeof window.requestIdleCallback === "function") {
-      const id = window.requestIdleCallback(mount, { timeout: IDLE_TIMEOUT_MS });
-      return () => window.cancelIdleCallback(id);
-    }
-    const id = window.setTimeout(mount, 300);
-    return () => window.clearTimeout(id);
+    let cancelIdle = () => {};
+    const cancelIntro = whenIntroDone(() => {
+      if (typeof window.requestIdleCallback === "function") {
+        const id = window.requestIdleCallback(mount, { timeout: IDLE_TIMEOUT_MS });
+        cancelIdle = () => window.cancelIdleCallback(id);
+      } else {
+        const id = window.setTimeout(mount, 300);
+        cancelIdle = () => window.clearTimeout(id);
+      }
+    });
+    return () => {
+      cancelIntro();
+      cancelIdle();
+    };
   }, [nearViewport, status]);
 
   return { ref, nearViewport, status };

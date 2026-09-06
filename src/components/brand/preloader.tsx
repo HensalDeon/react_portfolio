@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState, type AnimationEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 
+import { INTRO_DONE_EVENT } from "@/components/brand/intro-signal";
 import { Monogram } from "@/components/brand/monogram";
 import { site } from "@/content/site";
 
@@ -15,34 +16,53 @@ const EXIT_ANIMATIONS = new Set(["preloader-exit", "preloader-fade"]);
  * by stroke, the name rises in, then the curtain lifts off the top of the
  * viewport with a curved trailing edge. Everything is server-rendered and
  * driven by CSS so it appears before hydration; React only removes it once
- * the exit animation has finished.
+ * the exit animation has finished. That is read through the Web Animations
+ * `finished` promise rather than an animationend event, so a device that
+ * hydrates after the curtain has already left still unlocks straight away.
  */
 export function Preloader() {
   const [done, setDone] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (done) return;
     const root = document.documentElement;
     root.style.overflow = "hidden";
-    const id = window.setTimeout(() => setDone(true), FALLBACK_MS);
+
+    let cancelled = false;
+    const finish = () => {
+      if (!cancelled) setDone(true);
+    };
+    const exit = ref.current
+      ?.getAnimations()
+      .find(
+        (animation) =>
+          animation instanceof CSSAnimation && EXIT_ANIMATIONS.has(animation.animationName),
+      );
+    // `finished` settles immediately if the animation already ran; rejects if
+    // it is cancelled, in which case the fallback timer still clears the curtain.
+    exit?.finished.then(finish, () => {});
+    const id = window.setTimeout(finish, FALLBACK_MS);
+
     return () => {
+      cancelled = true;
       root.style.overflow = "";
       window.clearTimeout(id);
     };
   }, [done]);
 
-  if (done) return null;
+  // Lets deferred work (the 3D scenes) know the main thread is free again.
+  useEffect(() => {
+    if (done) window.dispatchEvent(new Event(INTRO_DONE_EVENT));
+  }, [done]);
 
-  const onAnimationEnd = (event: AnimationEvent<HTMLDivElement>) => {
-    if (event.target === event.currentTarget && EXIT_ANIMATIONS.has(event.animationName)) {
-      setDone(true);
-    }
-  };
+  if (done) return null;
 
   return (
     <div
+      ref={ref}
       aria-hidden
-      onAnimationEnd={onAnimationEnd}
+      data-preloader=""
       className="preloader fixed inset-x-0 top-0 z-[100] bg-background text-foreground"
     >
       <div className="preloader-content relative flex h-svh flex-col items-center justify-center gap-7">
